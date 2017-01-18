@@ -7,7 +7,7 @@
 **
 ** (C) Copyright IBM Corp. 1989, 2014
 **
-** The source code for this program is not published or otherwise divested of its trade secrets, 
+** The source code for this program is not published or otherwise divested of its trade secrets,
 ** irrespective of what has been deposited with the U.S. Copyright Office.
 ************************************************************************/
 
@@ -32,7 +32,7 @@
 
 The XD API is a collection of C/C++ functions that enable external programs
 to control the IBM SPSS Statistics backend ("X-Drives").  These functions are implemented
-in part with facilities already present, drawing heavily from the 
+in part with facilities already present, drawing heavily from the
 IBM SPSS Statistics Batch Facility, a small executable program providing command line control of
 the IBM SPSS Statistics backend.
 
@@ -72,7 +72,7 @@ Usually the return value of an action request is an error code and the
 return value of an information request is the information requested.
 
 This XD API documentation is part of a software development kit (SDK) for the
-Programmability Extension. For more information and tools to use with the Programmability Extension, 
+Programmability Extension. For more information and tools to use with the Programmability Extension,
 visit the SPSS community at http://www.ibm.com/developerworks/spssdevcentral/.
 
 \subpage notices "Legal Notices"
@@ -173,7 +173,7 @@ SPSSXD_API int SetUpFromSpss( SpssAdapter* anAdapter, SpssXDSmb* anSmb);
     -encoding <encod> Sets the subdirectory where the language encodings are stored.
   \endcode
   \return The return code. \n
-          0=Success \n 
+          0=Success \n
           17=IBM SPSS Statistics backend is not ready
 
 */
@@ -200,7 +200,7 @@ SPSSXD_API void StopSpss();
     cause of failure is a problem with one of the submitted commands.
     Each error in running an IBM SPSS Statistics command results in a non-zero return
     code.
-    
+
     When submitting syntax that includes a BEGIN PROGRAM - END PROGRAM block, each of the lines in the block (including BEGIN PROGRAM)
     must be queued using the QueueCommandPart function. The END PROGRAM statement, however, can be submitted with the Submit function. In addition,
     note that you cannot submit an empty BEGIN PROGRAM - END PROGRAM block. The block must contain at least one statement in the associated language (Python or R).
@@ -219,9 +219,9 @@ SPSSXD_API void StopSpss();
      }
   \endcode
   \return 0=Success \n
-          1=Comment \n 
-          2=Warning \n 
-          3=Serious \n 
+          1=Comment \n
+          2=Warning \n
+          3=Serious \n
           4=Fatal \n
           5=Catastrophic \n
           17=IBM SPSS Statistics backend is not ready
@@ -235,7 +235,7 @@ SPSSXD_API int Submit(const char* command, int length);
     Other new-line characters are not permitted.
     If the line ends with a command terminator, the next queued line will
     start a new IBM SPSS Statistics command.
-    
+
     When submitting syntax that includes a BEGIN PROGRAM - END PROGRAM block, each of the lines in the block (including BEGIN PROGRAM)
     must be queued using the QueueCommandPart function. The END PROGRAM statement, however, can be submitted with the Submit function. In addition,
     note that you cannot submit an empty BEGIN PROGRAM - END PROGRAM block. The block must contain at least one statement in the associated language (Python or R).
@@ -489,8 +489,8 @@ SPSSXD_API int GetVariableMeasurementLevel(int index,int& errCode);
        StopSpss();
      }
   \endcode
-  \return  The return code. \n 
-           0=Success \n 
+  \return  The return code. \n
+           0=Success \n
            9=No data source \n
            17=IBM SPSS Statistics backend is not ready
 */
@@ -507,7 +507,7 @@ SPSSXD_API int CreateXPathDictionary(const char* handle);
   \sa
      EvaluateXPath
   \return   The return code. \n
-            0=success \n 
+            0=success \n
             17=IBM SPSS Statistics backend is not ready
 */
 SPSSXD_API int RemoveXPathHandle(const char* handle);
@@ -1184,7 +1184,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
      * \param place     The placement of the dimension. \n
                             0 = row \n
                             1 = column \n
-                            2 = layer 
+                            2 = layer
      * \param position  The position of the dimension. Starts from 1. The lowest number is the inner dimension.
      * \param hideName  Specifies whether the dimension name is hidden.
      * \param hideLabels    specifies whether the dimension labels are hidden.
@@ -1530,7 +1530,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
        \return          The return code. \n
                         0=No error \n
                         17=IBM SPSS Statistics backend is not ready \n
-                        65=No procedure                       
+                        65=No procedure
 */
   SPSSXD_API int AddNumberCategory(const char* outLine,
                                    const char* title,
@@ -1565,7 +1565,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
        \return          The return code. \n
                         0=No error \n
                         17=IBM SPSS Statistics backend is not ready \n
-                        65=No procedure 
+                        65=No procedure
 */
   SPSSXD_API int AddStringCategory(const char* outLine,
                                    const char* title,
@@ -1809,7 +1809,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
 
              AddStringCategory("outline","title","mytitle",false,"coldim",1,1,false,false,"cat-2");
              SetStringCell("outline","title","mytitle",false,"coldim",1,1,false,false,"cell-2");
-             
+
              AddStringCategory("outline","title","mytitle",false,"coldim",1,1,false,false,"cat-3");
              SetDateCell("outline","title","mytitle",false,"coldim",1,1,false,false,"15-03-2009 00:00:00");
 
@@ -2117,7 +2117,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
   /**Retrieve the value of the line width of IBM SPSS Statistics output.
    *
    * \param errLevel    The error code returned from the IBM SPSS Statistics backend. 0 = no error.
-   * 
+   *
      \code
           int err = 0;
           int spssOutputWidth = 0;
@@ -2129,7 +2129,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
              Submit(cmd, strlen(cmd));
 
              spssOutputWidth = GetSpssOutputWidth(err);
-          } 
+          }
           if(IsXDriven()){
             StopSpss();
           }
@@ -2137,13 +2137,13 @@ SPSSXD_API int GetCursorPosition(int& curPos);
      \return          The value of the line width of IBM SPSS Statistics output.
    */
   SPSSXD_API int GetSpssOutputWidth(int& errLevel);
-  
+
   /**Retrieve the list of the split variables names in a split sav file.
    *
    * \param errLevel    The error code returned from the IBM SPSS Statistics backend. \n
                         0=No error \n
                         9=No data source
-   * 
+   *
      \code
           int err = 0;
           if(!IsBackendReady()){
@@ -2270,10 +2270,10 @@ SPSSXD_API int GetCursorPosition(int& curPos);
               int formatWid_1 = 20;
               int formatDec_1 = 0;
               errLevel = SetVarFormat(varName[1],formatType_1,formatWid_1,formatDec_1);
-              
+
               int varRole_0 = 2;
               errLevel = SetVarRole(varName[0],varRole_0);
-              
+
               int varRole_1 = 3;
               errLevel = SetVarRole(varName[1],varRole_1);
 
@@ -2956,7 +2956,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                       int measureLevel = GetVariableMeasurementLevelInProcDS(i,errLevel);
 
                       const char *varName = GetVariableNameInProcDS(i,errLevel);
-                      
+
                       int varRole = GetVariableRoleInProcDS(i, errLevel);
 
                       char **name;
@@ -3136,7 +3136,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
     /** Gets the values associated with a specified datafile attribute in the current procedure data source.
         \param attrName The name of the attribute to retrieve.
         \param attr The value(s) associated with the attribute.
-        \param numOfAttr The number of values associated with the attribute. A given datafile attribute can have an array of values. 
+        \param numOfAttr The number of values associated with the attribute. A given datafile attribute can have an array of values.
         \sa
             GetVariableCountInProcDS
         \return The return code. \n
@@ -3574,24 +3574,24 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 17=IBM SPSS Statistics backend is not ready
      */
     SPSSXD_API int GetXDriveMode(int &currMode,int &originMode);
-    
+
     /** Starts a data step. Within a data step you can create new datasets and manage multiple existing datasets. You create
         new datasets or access existing ones using the CreateDataset function. Data steps are closed with EndDataStep. \n \n
         Within a data step you cannot create a cursor, a pivot table, or a text block, and you cannot call
-        the StartProcedure function or the Submit function. \n \n 
-        You cannot start a data step if there are pending transformations or if a user procedure exists. You cannot start a data step if 
+        the StartProcedure function or the Submit function. \n \n
+        You cannot start a data step if there are pending transformations or if a user procedure exists. You cannot start a data step if
         there is an existing one. In that case, close the existing one with EndDataStep and call StartDataStep to start a new data step.
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 errLevel = StartSpss();
                 errLevel = Submit(cmd, strlen(cmd));
-                StartDataStep();                
-                errLevel = CreateDataset("*");                
-                EndDataStep();                
+                StartDataStep();
+                errLevel = CreateDataset("*");
+                EndDataStep();
                 StopSpss();
             }
         \endcode
@@ -3603,90 +3603,90 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         32=A user procedure is running
     */
     SPSSXD_API int StartDataStep();
-    
-    /** Ends the current data step and closes any dataset objects created with CreateDataset. 
+
+    /** Ends the current data step and closes any dataset objects created with CreateDataset.
         Any datasets created during the data step will be available.
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 errLevel = StartSpss();
                 errLevel = Submit(cmd, strlen(cmd));
-                StartDataStep();                
-                errLevel = CreateDataset("dataset");                
-                EndDataStep();                
+                StartDataStep();
+                errLevel = CreateDataset("dataset");
+                EndDataStep();
                 StopSpss();
             }
         \endcode
         \return The return code. \n
                       0=No error \n
                       17=IBM SPSS Statistics backend is not ready
-    */                    
+    */
     SPSSXD_API int EndDataStep();
-    
+
     /** Creates a dataset object for use within the current data step. Using this function, you can create a new empty dataset or
-        establish a connection to an existing dataset in the current session. Dataset objects are implicitly closed by the EndDataStep 
-        function and are thus unavailable outside of the data step in which they were created. You can explicitly close a dataset 
+        establish a connection to an existing dataset in the current session. Dataset objects are implicitly closed by the EndDataStep
+        function and are thus unavailable outside of the data step in which they were created. You can explicitly close a dataset
         object with the CloseDataset function, which also has the effect of closing the associated dataset. When driving IBM SPSS Statistics
-        from an external processor, the StopSPSS function will close any datasets opened during the session. 
-        \param name    A string specifying a dataset name. Cannot be NULL. If isEmpty=false, the following rules apply: 
-        if an asterisk ("*") or a blank ("") is specified for the name, the dataset object will be associated with the active dataset 
-        (if the active dataset does not have a name, then one will be generated); 
-        otherwise the dataset object will be associated with the specified dataset (if there is no dataset with the specified name, then the 
-        dataset object is associated with the active dataset and the active dataset is renamed to the specified name). If isEmpty=true, 
-        the following rules apply: if an asterisk ("*") is specified for the name, a new active dataset will be created with an automatically 
-        generated name (you can get the name from the GetActive function); if the name is blank (""), a new dataset is created with an automatically generated name, but it will not be 
-        the active dataset; otherwise, a new dataset will be created with the specified name but it will not be the active dataset.  
+        from an external processor, the StopSPSS function will close any datasets opened during the session.
+        \param name    A string specifying a dataset name. Cannot be NULL. If isEmpty=false, the following rules apply:
+        if an asterisk ("*") or a blank ("") is specified for the name, the dataset object will be associated with the active dataset
+        (if the active dataset does not have a name, then one will be generated);
+        otherwise the dataset object will be associated with the specified dataset (if there is no dataset with the specified name, then the
+        dataset object is associated with the active dataset and the active dataset is renamed to the specified name). If isEmpty=true,
+        the following rules apply: if an asterisk ("*") is specified for the name, a new active dataset will be created with an automatically
+        generated name (you can get the name from the GetActive function); if the name is blank (""), a new dataset is created with an automatically generated name, but it will not be
+        the active dataset; otherwise, a new dataset will be created with the specified name but it will not be the active dataset.
         \param isEmpty If true, then create a dataset object associated with a new empty data source; otherwise
-                        create a dataset object associated with an existing data source. 
+                        create a dataset object associated with an existing data source.
         \param hidden If true, then created dataset is hidden. Otherwise, the created dataset is visible.
 
-        \code 
+        \code
                     void func()
                     {
                         int errLevel = 0;
-    
+
                         std::vector<char*> cmds;
                         cmds.push_back("GET FILE='demo.sav'.");
                         cmds.push_back("dataset name ds1.");
                         cmds.push_back("GET FILE='demo.sav'.");
                         cmds.push_back("dataset name ds2.");
-                    
+
                         errLevel = StartSpss();
-                    
-                        for (std::vector<char*>::iterator cmd = cmds.begin(); cmd != cmds.end(); ++cmd) 
+
+                        for (std::vector<char*>::iterator cmd = cmds.begin(); cmd != cmds.end(); ++cmd)
                         {
                             QueueCommandPart(*cmd, strlen(*cmd));
                         }
                         errLevel = Submit("exe.",4);
-                        
+
                         StartDataStep();
-                        
+
                         // Create a dataset object associated with the dataset named ds1.
                         errLevel = CreateDataset("ds1");
-                    
+
                         // Create a dataset object associated with the active dataset.
                         errLevel = CreateDataset("*");
-                    
+
                         // Create a dataset object associated with the active dataset by explicitly specifying its name.
                         errLevel = CreateDataset("ds2");
-                    
+
                         // Create a dataset object associated with the active dataset and rename the dataset to ds3.
                         errLevel = CreateDataset("ds3");
-                    
+
                         // Create a new inactive and empty dataset named ds4.
                         errLevel = CreateDataset("ds4", true);
-                            
+
                         // Create a new active and empty dataset and assign a name to it automatically.
                         errLevel = CreateDataset("*", true);
-                        
+
                         EndDataStep();
-                        
+
                         StopSpss();
                     }
-        \endcode        
+        \endcode
         \return    The return code. \n
                         0=No error \n
                         17=IBM SPSS Statistics backend is not ready \n
@@ -3699,7 +3699,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
     SPSSXD_API int CreateDataset(const char *name = "*",
                                  const bool isEmpty = false,
                                  const bool hidden = false);
-    
+
     /** Rename a dataset accessed within a data step.
         \param oldname     The current name of the dataset.
         \param newname     The new name for the dataset. Cannot be "" or "*".
@@ -3708,44 +3708,44 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 errLevel = StartSpss();
-                errLevel = Submit(cmd, strlen(cmd));    
+                errLevel = Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 errLevel = CreateDataset("*");
                 const char* oldname = GetActive( errLevel);
                 const char* newname = "dscars";
                 errLevel = SetDatasetName(oldname, newname);
-               
-                EndDataStep();    
+
+                EndDataStep();
                 StopSpss();
             }
-        \endcode 
+        \endcode
         \return        The return code. \n
                         0=No error \n
                         17=IBM SPSS Statistics backend is not ready \n
                         87=Invalid dataset name \n
                         91=A dataset with the specified name already exists \n
                         89=Function cannot be called outside of a data step or user procedure
-    */            
+    */
     SPSSXD_API int SetDatasetName(const char *oldname,
                                   const char *newname);
-    
+
     /** Generate a dataset name.
         \param dsName  The generated dataset name. At least 10 bytes of memory are allocated for the name.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 StartSpss();
-                
+
                 char dsname[10];
-                
+
                 errLevel = GetNewDatasetName(dsname);
-            
+
                 std::cout<< dsname << std::endl;
-                   
+
                 StopSpss();
             }
         \endcode
@@ -3753,8 +3753,8 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         0=No error \n
                         17=IBM SPSS Statistics backend is not ready
     */
-    SPSSXD_API int  GetNewDatasetName(char* dsName);    
-                 
+    SPSSXD_API int  GetNewDatasetName(char* dsName);
+
     /** Gets the active dataset name.
         \param errLevel  The return code. \n
                             0=No error \n
@@ -3766,39 +3766,39 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 errLevel = StartSpss();
-                errLevel = Submit(cmd, strlen(cmd));    
+                errLevel = Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 errLevel = CreateDataset("*");
                 const char* activeName = GetActive( errLevel);
-                std::cout<< activeName << std::endl;   
-            
-                EndDataStep();    
+                std::cout<< activeName << std::endl;
+
+                EndDataStep();
                 StopSpss();
             }
         \endcode
         \return        The name of the active dataset. If the active dataset has no name, then "*" is returned.
     */
     SPSSXD_API const char* GetActive(int& errLevel);
-    
+
     /** Sets the active dataset. This function can only be used within a data step.
-        \param name    The name of the dataset to be set to active. This must be a dataset associated with a dataset object 
+        \param name    The name of the dataset to be set to active. This must be a dataset associated with a dataset object
         in the current data step.
         \code
             void func()
             {
                 int errLevel = 0;
-    
+
                 StartSpss();
                 StartDataStep();
-                
+
                 const char* dsName = "newds";
                 errLevel = CreateDataset(dsName);
                 errLevel = SetActive(dsName);
-                
-                EndDataStep();    
+
+                EndDataStep();
                 StopSpss();
             }
         \endcode
@@ -3810,63 +3810,63 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                             87=Invalid dataset name
     */
     SPSSXD_API int SetActive(const char *name);
-    
+
     /** Creates a deep copy of a specified dataset.
         \param oriDs   The name of the dataset to be copied. Must be the name of a dataset associated with a dataset object in the
                        current data step. You can specify "*" to make a copy of the active dataset.
-        \param desDs   The name of the new dataset. It cannot be the name of an existing dataset. If "*" is specified, the 
-                       copy becomes the active dataset with a name that is automatically generated. 
+        \param desDs   The name of the new dataset. It cannot be the name of an existing dataset. If "*" is specified, the
+                       copy becomes the active dataset with a name that is automatically generated.
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-                
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* orids = "orids";
                 const char* desds = "desds";
                 errLevel = CreateDataset(orids);
                 errLevel = CopyDataset(orids, desds);
-                
-                EndDataStep();    
+
+                EndDataStep();
                 StopSpss();
             }
         \endcode
         \return        The return code. \n
-                            0=No error \n 
+                            0=No error \n
                             17=IBM SPSS Statistics backend is not ready \n
                             86=No active dataset \n
                             87=Invalid dataset name \n
                             91=A dataset with the specified name already exists \n
                             89=Function cannot be called outside of a data step or user procedure \n
-                            90=Cannot create an active dataset in a user procedure \n 
+                            90=Cannot create an active dataset in a user procedure \n
     */
-    SPSSXD_API int CopyDataset( const char* oriDs, 
+    SPSSXD_API int CopyDataset( const char* oriDs,
                                 const char* desDs);
-                                
-    /** Gets the names of all defined datasets.(including those datasets which are just a name defined by DATASET DECLARE) If the active 
+
+    /** Gets the names of all defined datasets.(including those datasets which are just a name defined by DATASET DECLARE) If the active
 		dataset is unnamed, then "*" will be returned. After calling this function, FreeStringArray should be called to free the memory
 		for the names.
         \param nameList    The dataset names.
         \param length      The number of names in the returned list.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-                
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* blkds = "blkds";
                 const char* cpyds = "cpyds";
                 errLevel = CreateDataset(blkds, true);
                 errLevel = CopyDataset(blkds, cpyds);
-                
+
                 char** names;
                 int len;
                 errLevel = GetSpssDatasets(&names, len);
@@ -3875,38 +3875,38 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                     std::cout<< names[i] <<std::endl;
                 }
                 FreeStringArray(names, len);
-            
-                EndDataStep();    
+
+                EndDataStep();
                 StopSpss();
             }
         \endcode
         \return            The return code. \n
                             0=No error \n
                             17=IBM SPSS Statistics backend is not ready
-    */                        
+    */
     SPSSXD_API int GetSpssDatasets( char*** nameList,
                                     int& length);
-    
-    /** Gets the names of all opened datasets. (not including those datasets which just is a name defined by DATASET DECLARE.) 
-	    If the active dataset is unnamed, then "*" will be returned. After calling this function, FreeStringArray should be 
+
+    /** Gets the names of all opened datasets. (not including those datasets which just is a name defined by DATASET DECLARE.)
+	    If the active dataset is unnamed, then "*" will be returned. After calling this function, FreeStringArray should be
 		called to free the memory for the names.
         \param nameList    The dataset names.
         \param length      The number of names in the returned list.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-                
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* blkds = "blkds";
                 const char* cpyds = "cpyds";
                 errLevel = CreateDataset(blkds, true);
                 errLevel = CopyDataset(blkds, cpyds);
-                
+
                 char** names;
                 int len;
                 errLevel = GetOpenedSpssDatasets(&names, len);
@@ -3915,18 +3915,18 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                     std::cout<< names[i] <<std::endl;
                 }
                 FreeStringArray(names, len);
-            
-                EndDataStep();    
+
+                EndDataStep();
                 StopSpss();
             }
         \endcode
         \return            The return code. \n
                             0=No error \n
                             17=IBM SPSS Statistics backend is not ready
-    */                        
+    */
     SPSSXD_API int GetOpenedSpssDatasets( char*** nameList,
                                     int& length);
-    /** Gets the names of all datasets associated with dataset objects in the current data step, i.e. those objects created 
+    /** Gets the names of all datasets associated with dataset objects in the current data step, i.e. those objects created
         with the CreateDataset function. After calling this function, FreeStringArray should be called to free the memory for the names.
         \param nameList    The dataset names.
         \param length      The number of names in the returned list.
@@ -3935,16 +3935,16 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-                
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* blkds = "blkds";
                 const char* cpyds = "cpyds";
                 errLevel = CreateDataset(blkds, true);
                 errLevel = CopyDataset(blkds, cpyds);
-                
+
                 char** names;
                 int len;
                 errLevel = GetDatastepDatasets(&names, len);
@@ -3953,8 +3953,8 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                     std::cout<< names[i] <<std::endl;
                 }
                 FreeStringArray(names, len);
-            
-                EndDataStep();    
+
+                EndDataStep();
                 StopSpss();
             }
         \endcode
@@ -3964,79 +3964,79 @@ SPSSXD_API int GetCursorPosition(int& curPos);
     */
     SPSSXD_API int GetDatastepDatasets( char*** nameList,
                                 int& length);
-    
+
     /** Frees the memory associated with a 1-dimension char*.
         \param array   The char** object
         \param length  The length of the string array
         \return        The return code. \n
-                        0=No error 
-    */                                                        
+                        0=No error
+    */
     SPSSXD_API int FreeStringArray(char **array, const int length);
 
     /** Frees the memory associated with a char*.
-        \param str     The char* 
+        \param str     The char*
         \return        The return code. \n
-                        0=No error 
-    */                                                        
-    SPSSXD_API int FreeString(char *str);     
+                        0=No error
+    */
+    SPSSXD_API int FreeString(char *str);
 
     /** Closes a dataset object created by the CreateDataset function as well as the associated IBM SPSS Statistics dataset.
-        If the dataset object is associated with the active dataset, the association with the dataset's name is broken and 
+        If the dataset object is associated with the active dataset, the association with the dataset's name is broken and
         the active dataset remains active but has no name.
         \param name    The dataset name. You can specify "*" for the active dataset.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 errLevel = CreateDataset("*");
                 errLevel = CloseDataset("*");
-            
-                EndDataStep();    
+
+                EndDataStep();
                 StopSpss();
             }
         \endcode
         \return        The return code. \n
-                            0=No error \n 
+                            0=No error \n
                             17=IBM SPSS Statistics backend is not ready \n
                             89=Function cannot be called outside of a data step or user procedure\n
                             87=Invalid dataset name \n
                             86=No active dataset
     */
     SPSSXD_API int CloseDataset(const char* name);
-   
+
    /** Inserts a variable into a specified dataset at a specified position.
        \param dsName  The dataset name. Must be the name of a dataset associated with a dataset object in the
                                current data step.
        \param index   The position at which to insert the variable (0-based).
        \param varName The variable name.
        \param type    The variable type--0 for numeric and an integer equal to the defined length for a string variable (maximum of 32767 bytes).
-       \code 
+       \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 errLevel = InsertVariable(dsname,9,"price", 0);
                 errLevel = InsertVariable(dsname,0,"id", 0);
-                
-                EndDataStep();    
+
+                EndDataStep();
                 StopSpss();
             }
        \endcode
        \return        The return code. \n
-                            0=No error \n 
+                            0=No error \n
                             17=IBM SPSS Statistics backend is not ready \n
                             89=Function cannot be called outside of a data step or user procedure \n
                             87=Invalid dataset name \n
@@ -4049,8 +4049,8 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                     const int index,
                                     const char* varName,
                                     const int type);
-        
-    /** Deletes the variable at a specified position in a specified dataset. 
+
+    /** Deletes the variable at a specified position in a specified dataset.
            \param dsName  The dataset name. Must be the name of a dataset associated with a dataset object in the
                             current data step.
            \param index   The index position of the variable (0-based).
@@ -4059,18 +4059,18 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 {
                     int errLevel = 0;
                     const char* cmd ="GET FILE='demo.sav'.";
-                
+
                     StartSpss();
-                    Submit(cmd, strlen(cmd));    
+                    Submit(cmd, strlen(cmd));
                     StartDataStep();
-                    
+
                     const char* dsname = "example";
                     errLevel = CreateDataset(dsname);
-                    
+
                     errLevel = DeleteVariable(dsname,0); // delete variable age
                     errLevel = DeleteVariable(dsname,7); // delete variable employ
-                    
-                    EndDataStep();    
+
+                    EndDataStep();
                     StopSpss();
                 }
            \endcode
@@ -4080,10 +4080,10 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                            89=Function cannot be called outside of a data step or user procedure \n
                            87=Invalid dataset name \n
                            10=Invalid index \n
-    */                            
+    */
     SPSSXD_API int DeleteVariable(const char* dsName,
                                   const int index);
-    
+
     /** Gets the number of variables in the specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
                              current data step.
@@ -4092,33 +4092,33 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 17 =IBM SPSS Statistics backend is not ready \n
                                 89 =Function cannot be called outside of a data step or user procedure \n
                                 87 =Invalid dataset name \n
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 std::cout << GetVarCountInDS(dsname, errLevel) << std::endl;
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The number of variables.
     */
     SPSSXD_API unsigned GetVarCountInDS(const char* dsName,
                                         int& errLevel);
-    
+
     /** Gets the name of the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                             current data step.  
-        \param index       The index position of the variable (0-based).                    
+                             current data step.
+        \param index       The index position of the variable (0-based).
         \param errLevel    The return code. \n
                                 0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
@@ -4130,20 +4130,20 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     std::cout << GetVarNameInDS(dsname, i, errLevel) << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return     The variable name.
@@ -4151,36 +4151,36 @@ SPSSXD_API int GetCursorPosition(int& curPos);
     SPSSXD_API const char* GetVarNameInDS(const char* dsName,
                                           const int index,
                                           int& errLevel);
-    
+
      /** Sets the name of the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                             current data step. 
+                             current data step.
         \param index       The index position of the variable (0-based).
         \param varName     The variable name.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     char prename[12] = "ds";
                     const char* varname = GetVarNameInDS(dsname, i, errLevel);
                     errLevel = SetVarNameInDS(dsname, i, strcat(prename, varname));
                     std::cout << GetVarNameInDS(dsname, i, errLevel) << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
-            }    
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            The return code. \n
                                 0=No error \n
@@ -4190,15 +4190,15 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 10=Invalid index \n
                                 27=Invalid variable name \n
                                 25=Duplicate variable name \n
-    */                                      
+    */
     SPSSXD_API int SetVarNameInDS(const char* dsName,
                                   const int index,
                                   const char* varName);
-    
+
     /** Gets the label for the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
                              current data step.
-        \param index       The index position of the variable (0-based).                   
+        \param index       The index position of the variable (0-based).
         \param errLevel    The return code. \n
                                 0=No error \n
                                 17 =IBM SPSS Statistics backend is not ready \n
@@ -4206,62 +4206,62 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 87 =Invalid dataset name \n
                                 10 =Invalid index \n
                                 27 =Invalid variable name
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     std::cout << GetVarLabelInDS(dsname, i, errLevel) << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
          \return            The variable label.
-    */                              
+    */
     SPSSXD_API const char* GetVarLabelInDS(const char* dsName,
                                           const int index,
                                           int& errLevel);
-    
+
     /** Sets the label for the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
                              current data step.
         \param index       The index position of the variable (0-based).
         \param varLabel    The variable label.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     char prelabel[50] = "ds ";
                     const char* varlabel = GetVarLabelInDS(dsname, i, errLevel);
                     errLevel = SetVarLabelInDS(dsname, i, strcat(prelabel, varlabel));
                     std::cout << GetVarLabelInDS(dsname, i, errLevel) << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
-            }      
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            The return code. \n
                                 0=No error \n
@@ -4269,74 +4269,74 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index \n
-    */                                      
+    */
     SPSSXD_API int SetVarLabelInDS(const char* dsName,
                                   const int index,
                                   const char* varLabel);
-    
+
     /** Gets the variable type (numeric or string) of the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
                              current data step.
-        \param index       The index position of the variable (0-based).                    
+        \param index       The index position of the variable (0-based).
         \param errLevel    The return code. \n
                                 0=No error \n
                                 17 =IBM SPSS Statistics backend is not ready \n
                                 89 =Function cannot be called outside of a data step or user procedure  \n
                                 87 =Invalid dataset name \n
                                 10 =Invalid index
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     std::cout << GetVarTypeInDS(dsname, i, errLevel) << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return           The variable type. For numeric variables, the type is 0. For string variables, the type is an integer equal to
                           the defined length (maximum of 32767 bytes).
-    */                                  
+    */
     SPSSXD_API int GetVarTypeInDS(const char* dsName,
                                   const int index,
                                   int& errLevel);
-        
+
     /** Sets the variable type (numeric or string) for the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                                          current data step.  
-        \param index       The index position of the variable (0-based).     
-        \param varType     The variable type--0 for numeric and an integer equal to the defined length for a string variable (maximum of 32767 bytes). 
-        \code 
+                                          current data step.
+        \param index       The index position of the variable (0-based).
+        \param varType     The variable type--0 for numeric and an integer equal to the defined length for a string variable (maximum of 32767 bytes).
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 errLevel = InsertVariable(dsname, 9, "mark", 8);
-                errLevel = SetVarTypeInDS(dsname, 9, 16); 
-                
-                EndDataStep();    
-                StopSpss(); 
-            } 
-        \endcode     
+                errLevel = SetVarTypeInDS(dsname, 9, 16);
+
+                EndDataStep();
+                StopSpss();
+            }
+        \endcode
         \return            The return code. \n
                                 0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
@@ -4344,75 +4344,75 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 87=Invalid dataset name \n
                                 10=Invalid index \n
                                 26=Invalid variable type \n
-    */                          
+    */
     SPSSXD_API int SetVarTypeInDS(const char* dsName,
                                   const int index,
                                   const int varType);
-   
+
     /** Gets the display format of the variable at a specified position in a specified dataset.
-        \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the 
+        \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
                              current data step.
-        \param index       The index position of the variable (0-based).                   
+        \param index       The index position of the variable (0-based).
         \param errLevel    The return code. \n
                                 0=No error \n
                                 17 =IBM SPSS Statistics backend is not ready \n
                                 89 =Function cannot be called outside of a data step or user procedure \n
                                 87 =Invalid dataset name \n
                                 10 =Invalid index
-        \code 
-            void func()
-            {
-                int errLevel = 0;
-                const char* cmd ="GET FILE='demo.sav'.";
-            
-                StartSpss();
-                Submit(cmd, strlen(cmd));    
-                StartDataStep();
-                
-                const char* dsname = "example";
-                errLevel = CreateDataset(dsname);
-                for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
-                    std::cout << GetVarFormatInDS(dsname, i, errLevel) << std::endl;
-                }
-                
-                EndDataStep();    
-                StopSpss(); 
-            }
-        \endcode
-        \return            The variable format.
-    */                                       
-    SPSSXD_API const char* GetVarFormatInDS( const char* dsName,
-                                              const int index,
-                                              int& errLevel);
-    
-    /** Sets the display format of the variable at a specified position in a specified dataset.
-        and may destroy corresponded case values.
-        \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                                              current data step.    
-        \param index           The index position of the variable (0-based).      
-        \param formatType      The type code for the format. For instance, 'F' for standard numeric or 'A' for string.
-        \param formatWidth     The defined width, which must include any decimal digits and the decimal indicator. 
-        \param formatDecimal   The number of digits after the decimal, for numeric formats.    
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+                for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
+                {
+                    std::cout << GetVarFormatInDS(dsname, i, errLevel) << std::endl;
+                }
+
+                EndDataStep();
+                StopSpss();
+            }
+        \endcode
+        \return            The variable format.
+    */
+    SPSSXD_API const char* GetVarFormatInDS( const char* dsName,
+                                              const int index,
+                                              int& errLevel);
+
+    /** Sets the display format of the variable at a specified position in a specified dataset.
+        and may destroy corresponded case values.
+        \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
+                                              current data step.
+        \param index           The index position of the variable (0-based).
+        \param formatType      The type code for the format. For instance, 'F' for standard numeric or 'A' for string.
+        \param formatWidth     The defined width, which must include any decimal digits and the decimal indicator.
+        \param formatDecimal   The number of digits after the decimal, for numeric formats.
+        \code
+            void func()
+            {
+                int errLevel = 0;
+                const char* cmd ="GET FILE='demo.sav'.";
+
+                StartSpss();
+                Submit(cmd, strlen(cmd));
+                StartDataStep();
+
+                const char* dsname = "example";
+                errLevel = CreateDataset(dsname);
+
                 errLevel = InsertVariable(dsname, 9, "mark", 8);
-                errLevel = SetVarFormatInDS(dsname, 9, 1, 16, 0); 
-                
-                EndDataStep();    
-                StopSpss(); 
-            }   
+                errLevel = SetVarFormatInDS(dsname, 9, 1, 16, 0);
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            The return code. \n
                                 0=No error \n
@@ -4420,75 +4420,75 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                              
+    */
     SPSSXD_API int SetVarFormatInDS(  const char* dsName,
                                       const int index,
                                       const int formatType,
                                       const int formatWidth,
                                       const int formatDecimal);
-    
+
     /** Gets the alignment of the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                                          current data step.    
-        \param index       The index position of the variable (0-based).                    
+                                          current data step.
+        \param index       The index position of the variable (0-based).
         \param errLevel    The return code. \n
                                 0=No error \n
                                 17 =IBM SPSS Statistics backend is not ready \n
                                 89 =Function cannot be called outside of a data step or user procedure \n
                                 87 =Invalid dataset name \n
                                 10 =Invalid index \n
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     std::cout << GetVarAlignmentInDS(dsname, i, errLevel) << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return           The variable alignment: 0=left, 1=right, 2=center.
-    */                                  
+    */
     SPSSXD_API int GetVarAlignmentInDS(const char* dsName,
                                   const int index,
                                   int& errLevel);
-    
+
     /** Sets the alignment for the variable at a specified position in a specified dataset.
         \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                                              current data step.   
-        \param index           The index position of the variable (0-based).      
+                                              current data step.
+        \param index           The index position of the variable (0-based).
         \param varAlignment    The variable alignment: 0=left, 1=right, 2=center.
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
-                errLevel = SetVarAlignmentInDS(dsname, 0, 0); 
-                errLevel = SetVarAlignmentInDS(dsname, 1, 1); 
-                errLevel = SetVarAlignmentInDS(dsname, 2, 2); 
-                
-                EndDataStep();    
-                StopSpss(); 
-            }  
+
+                errLevel = SetVarAlignmentInDS(dsname, 0, 0);
+                errLevel = SetVarAlignmentInDS(dsname, 1, 1);
+                errLevel = SetVarAlignmentInDS(dsname, 2, 2);
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            the return code.
                                 0=No error \n
@@ -4497,15 +4497,15 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 87=Invalid dataset name \n
                                 10=Invalid index \n
                                 35=Invalid alignment
-    */                                    
+    */
     SPSSXD_API int SetVarAlignmentInDS(const char* dsName,
                                       const int index,
                                       const int varAlignment);
-    
+
     /** Gets the measurement level of the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).                    
+                       current data step.
+        \param index       The index position of the variable (0-based).
         \param errLevel    The return code. \n
                                 0=No error \n
                                 17 =IBM SPSS Statistics backend is not ready. \n
@@ -4517,54 +4517,54 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     std::cout << GetVarMeasurementLevelInDS(dsname, i, errLevel) << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The measurement level of the variable: NOMINAL, ORDINAL, SCALE or UNKNOWN.
-    */                                  
+    */
     SPSSXD_API const char* GetVarMeasurementLevelInDS(const char* dsName,
                                                       const int index,
                                                       int& errLevel);
-    
+
     /** Sets the measurement level of the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).      
+                       current data step.
+        \param index       The index position of the variable (0-based).
         \param varMeasure  The measurement level of the variable: NOMINAL, ORDINAL or SCALE.
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 const char* measureValue[3] = {"NOMINAL", "ORDINAL", "SCALE"};
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     errLevel = SetVarMeasurementLevelInDS(dsname, i, measureValue[i % 3]);
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
-            }    
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            The return code. \n
                                 0=No error \n
@@ -4573,15 +4573,15 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 87=Invalid dataset name \n
                                 10=Invalid index \n
                                 34=Invalid measurement level
-    */                                                   
+    */
     SPSSXD_API int SetVarMeasurementLevelInDS(const char* dsName,
                                               const int index,
                                               const char* varMeasure);
-    
+
     /** Gets the missing values for a numeric variable at a specified position in a specified dataset.
         \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index           The index position of the variable (0-based).                    
+                       current data step.
+        \param index           The index position of the variable (0-based).
         \param missingFormat   The missing value type: \n
         -3 for a range of values and a single discrete value \n
         -2 for a range of values \n
@@ -4593,22 +4593,22 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                is the first discrete missing value.
         \param missingValue2   For missing value types -3 and -2, this is the end of the range. For missing value types 2 and 3 this
                                is the second discrete missing value.
-        \param missingValue3   For missing value type -3 this is the single discrete missing value. For missing value type 3 this 
+        \param missingValue3   For missing value type -3 this is the single discrete missing value. For missing value type 3 this
                                is the third discrete missing value.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     int missingformat;
                     double d1,d2,d3;
                     errLevel = GetVarNMissingValuesInDS(dsname, i, missingformat, &d1, &d2, &d3);
@@ -4616,9 +4616,9 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         std::cout << "missing format=" << missingformat \
                                 <<" d1=" << d1 << " d2=" <<d2 << " d3=" << d3 << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -4628,55 +4628,55 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                          
+    */
     SPSSXD_API int GetVarNMissingValuesInDS(const char* dsName,
                                           const int index,
                                           int& missingFormat,
                                           double* missingValue1,
                                           double* missingValue2,
                                           double* missingValue3);
-    
+
     /** Gets the missing values for a string variable at a specified position in a specified dataset.
         \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index           The index position of the variable (0-based).                    
+                       current data step.
+        \param index           The index position of the variable (0-based).
         \param missingFormat   The missing value type: \n
         0 for no missing values \n
         1 for a single discrete missing value \n
         2 for two discrete missing values \n
         3 for three discrete missing values
-        \param missingValue1   The first missing value, if any.  
+        \param missingValue1   The first missing value, if any.
         \param missingValue2   The second missing value, if any.
         \param missingValue3   The third missing value, if any.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='Employee data.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                const int CMISSING_SIZE = 9;                        
+                const int CMISSING_SIZE = 9;
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     int varType = GetVarTypeInDS(dsname, i, errLevel);
-            
+
                     if(varType != 0 ) {
                         int missingformat;
                         char c1[CMISSING_SIZE],c2[CMISSING_SIZE],c3[CMISSING_SIZE];
                         errLevel = GetVarCMissingValuesInDS(dsname, i, missingformat, c1, c2, c3);
                         if ( errLevel == 0 )
-                            std::cout << "missing format=" << missingformat 
+                            std::cout << "missing format=" << missingformat
                                       << " c1=" << c1 << " c2=" << c2 << " c3=" << c3 << std::endl;
                     }
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -4686,18 +4686,18 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                              
+    */
     SPSSXD_API int GetVarCMissingValuesInDS(  const char* dsName,
                                               const int index,
                                               int& missingFormat,
                                               char* missingValue1,
                                               char* missingValue2,
                                               char* missingValue3);
-        
+
     /** Sets the missing values for the numeric variable at a specified position in a specified dataset.
         \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index           The index position of the variable (0-based).      
+                       current data step.
+        \param index           The index position of the variable (0-based).
         \param missingFormat   The missing value type: \n
         -3 for a range of values and a single discrete value \n
         -2 for a range of values \n
@@ -4709,26 +4709,26 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                is the first discrete missing value.
         \param missingValue2   For missing value types -3 and -2, this is the end of the range. For missing value types 2 and 3 this
                                is the second discrete missing value.
-        \param missingValue3   For missing value type -3 this is the single discrete missing value. For missing value type 3 this 
+        \param missingValue3   For missing value type -3 this is the single discrete missing value. For missing value type 3 this
                                is the third discrete missing value.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
-                errLevel = SetVarNMissingValuesInDS(dsname, 0, 3, 0, 100, 300);  
-                
-                EndDataStep();    
-                StopSpss(); 
-            }   
+
+                errLevel = SetVarNMissingValuesInDS(dsname, 0, 3, 0, 100, 300);
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            the return code.
                                 0=No error \n
@@ -4737,42 +4737,42 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                               
+    */
     SPSSXD_API int SetVarNMissingValuesInDS(const char* dsName,
                                             const int index,
                                             const int missingFormat,
                                             const double missingValue1,
                                             const double missingValue2,
                                             const double missingValue3);
-    
-    /** Sets the missing values for the string variable at a specified position in a specified dataset.    
+
+    /** Sets the missing values for the string variable at a specified position in a specified dataset.
         \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index           The index position of the variable (0-based).      
+                       current data step.
+        \param index           The index position of the variable (0-based).
         \param missingFormat   The missing value type: \n
         0 for no missing values \n
         1 for a single discrete missing value \n
         2 for two discrete missing values \n
         3 for three discrete missing values
-        \param missingValue1   The first missing value, if any.  
+        \param missingValue1   The first missing value, if any.
         \param missingValue2   The second missing value, if any.
-        \param missingValue3   The third missing value, if any.    
+        \param missingValue3   The third missing value, if any.
         \code
             void func()
             {
                 int errLevel = 0;
 
-                StartSpss();  
+                StartSpss();
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname, true);
                 errLevel = InsertVariable(dsname, 0, "s1", 8);
-                
-                errLevel = SetVarCMissingValuesInDS(dsname, 0, 3, "tes1", "test2", "test3");  
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                errLevel = SetVarCMissingValuesInDS(dsname, 0, 3, "tes1", "test2", "test3");
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -4782,27 +4782,27 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                        
+    */
     SPSSXD_API int SetVarCMissingValuesInDS(const char* dsName,
                                             const int index,
                                             const int missingFormat,
                                             const char* missingValue1,
                                             const char* missingValue2,
                                             const char* missingValue3);
-    
+
     /** Gets the names of any variable attributes for the variable with a specified position in a specified dataset.
         After calling this function, FreeStringArray should be called to free the memory for the names.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).                    
+                       current data step.
+        \param index       The index position of the variable (0-based).
         \param names       The attribute names.
-        \param length      The number of names in the returned list.  
+        \param length      The number of names in the returned list.
         \return            The return code. \n
                                 0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
-                                10=Invalid index 
+                                10=Invalid index
         \sa
             GetVarAttributesInDS
         \return            the return code.
@@ -4811,21 +4811,21 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Not dataset workspace \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                            
+    */
     SPSSXD_API int GetVarAttributesNameInDS(const char* dsName,
                                             const int index,
                                             char*** names,
                                             int& length);
-    
+
     /** Gets the values associated with a particular variable attribute for the variable at a specified position in a given dataset.
         After calling this function, FreeStringArray should be called to free the memory for the values.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).     
-        \param attName     The attribute name.          
+                       current data step.
+        \param index       The index position of the variable (0-based).
+        \param attName     The attribute name.
         \param values      The returned attribute values.
         \param length      The number of returned attribute values (a given variable attribute can have an array of values).
-        \code 
+        \code
             int errLevel = 0;
             if(!IsBackendReady()){
                errLevel = StartSpss();
@@ -4847,26 +4847,26 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 Submit(cmd.c_str(),cmd.size());
 
                 StartDataStep();
-                
+
                 errLevel = CreateDataset( "*" , false);
                 const char *dsname = GetActive(errLevel);
-                
+
                 int varIndex = 0;
                 char** attrname;
                 int attrlen;
-                errLevel = GetVarAttributesNameInDS(dsname, varIndex, &attrname, attrlen);  
+                errLevel = GetVarAttributesNameInDS(dsname, varIndex, &attrname, attrlen);
                 if(attrlen>0)
                 {
                     char** values;
                     int valen;
-                    errLevel = GetVarAttributesInDS(dsname, 0, attrname[0], &values, valen); 
+                    errLevel = GetVarAttributesInDS(dsname, 0, attrname[0], &values, valen);
                     std::cout << attrname[0] << ":  " << values[0] << std::endl;
                     FreeStringArray(values,valen);
                     FreeStringArray(attrname,attrlen);
                 }
-                    
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -4875,39 +4875,39 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                            
+    */
     SPSSXD_API int GetVarAttributesInDS(const char* dsName,
                                         const int index,
                                         const char* attName,
                                         char*** values,
                                         int& length);
-    
+
     /** Sets the value(s) associated with a variable attribute for the variable at a specified position in a specified dataset.
         \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index           The index position of the variable (0-based).      
+                       current data step.
+        \param index           The index position of the variable (0-based).
         \param attrName        Attribute name
-        \param attributes      Attribute value(s).  
+        \param attributes      Attribute value(s).
         \param length          The number of values associated with the attribute (a given variable attribute can have an array of values).
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 const char* attrname = "test";
                 char* attvalue[] = {"a","g","e"};
                 errLevel = SetVarAttributesInDS(dsname, 0, attrname,attvalue, 3 );
-                    
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -4916,39 +4916,39 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                        
+    */
     SPSSXD_API int SetVarAttributesInDS(const char* dsName,
                                           const int index,
                                           const char* attrName,
                                           char** attributes,
                                           const int length);
-    
+
     /** Deletes a particular variable attribute from the variable at a specified position in a specified dataset.
         \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                                              current data step.   
-        \param index           The index position of the variable (0-based).      
+                                              current data step.
+        \param index           The index position of the variable (0-based).
         \param attrName        Name of the attribute to delete.
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 const char* attrname = "test";
                 char* attvalue[] = {"a","g","e"};
                 errLevel = SetVarAttributesInDS(dsname, 0, attrname,attvalue, 3 );
-                
+
                 errLevel = DelVarAttributesInDS(dsname, 0, attrname );
-                    
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -4958,37 +4958,37 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 87=Invalid dataset name \n
                                 10=Invalid index \n
                                 96=Specified attribute does not exist
-    */                                          
+    */
     SPSSXD_API int DelVarAttributesInDS(const char* dsName,
                                           const int index,
                                           const char* attrName);
-    
+
 
     /** Sets the value(s) associated with a datafile attribute for a specified dataset.
         \param dsName          The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
+                       current data step.
         \param attrName        Attribute name.
-        \param attributes      Attribute value(s).  
+        \param attributes      Attribute value(s).
         \param length          The number of values associated with the attribute (a given datafile attribute can have an array of values).
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 const char* attrname = "test";
                 char* attvalue[] = {"a","g","e"};
                 errLevel = SetDataFileAttributesInDS(dsname, attrname,attvalue, 3 );
-                    
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -4996,7 +4996,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 17=IBM SPSS Statistics backend is not ready \n
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
-    */                                        
+    */
     SPSSXD_API int SetDataFileAttributesInDS(const char* dsName,
                                              const char* attrName,
                                              char** attributes,
@@ -5008,11 +5008,11 @@ SPSSXD_API int GetCursorPosition(int& curPos);
         After calling this function, FreeDoubleArray should be called to free the memory for the values
         and FreeStringArray to free the labels.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).     
-        \param values      The values for which value labels are defined.         
+                       current data step.
+        \param index       The index position of the variable (0-based).
+        \param values      The values for which value labels are defined.
         \param labels      The associated value labels.
-        \param num         The number of value-label pairs.  
+        \param num         The number of value-label pairs.
         \return            The return code. \n
                                 0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
@@ -5020,53 +5020,53 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name. \n
                                 10=Invalid index
-    */                                              
+    */
     SPSSXD_API int GetVarNValueLabelInDS( const char* dsName,
                                           const int index,
                                           double** values,
                                           char*** labels,
                                           int& num);
-    
+
     /** Frees the memory associated with a double* object.
         \param array   The double* object
         \param length  The number of elements in the 1-dimension array.
         \return        The return code. \n
                             0=No error
-    */                                      
+    */
     SPSSXD_API int FreeDoubleArray(double* array, int length);
-    
+
     /** Gets the value labels for the string variable at a specified position in a specified dataset.
         After calling this function, FreeStringArray should be called to free the memory for the values
         and labels.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).     
-        \param values      The values for which value labels are defined.         
+                       current data step.
+        \param index       The index position of the variable (0-based).
+        \param values      The values for which value labels are defined.
         \param labels      The associated value labels.
         \param num         The number of value-label pairs.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     int varType = GetVarTypeInDS(dsname, i, errLevel);
-            
-                    if ( varType == 0) 
+
+                    if ( varType == 0)
                     {
                         double* values;
                         char**  labels;
                         int num;
-                        errLevel = GetVarNValueLabelInDS(dsname, i, &values, &labels, num);  
+                        errLevel = GetVarNValueLabelInDS(dsname, i, &values, &labels, num);
                         if (num > 0)
                         {
                             std::cout << GetVarNameInDS(dsname, i, errLevel) << std::endl;
@@ -5076,7 +5076,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                             }
                             FreeDoubleArray(values, num);
                             FreeStringArray(labels, num);
-            
+
                         }
                     }
                     else
@@ -5084,7 +5084,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         char**  values;
                         char**  labels;
                         int num;
-                        errLevel = GetVarCValueLabelInDS(dsname, i, &values, &labels, num);  
+                        errLevel = GetVarCValueLabelInDS(dsname, i, &values, &labels, num);
                         if (num > 0)
                         {
                             std::cout << GetVarNameInDS(dsname, i, errLevel) << std::endl;
@@ -5094,14 +5094,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                             }
                             FreeStringArray(values, num);
                             FreeStringArray(labels, num);
-            
+
                         }
                     }
-                           
+
                 }
-                    
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -5111,38 +5111,38 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */    
+    */
     SPSSXD_API int GetVarCValueLabelInDS( const char* dsName,
                                           const int index,
                                           char*** values,
                                           char*** labels,
                                           int& num);
-    
+
     /** Adds one value label for the numeric variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).     
-        \param value       The value for which a label is being set.         
+                       current data step.
+        \param index       The index position of the variable (0-based).
+        \param value       The value for which a label is being set.
         \param label       The associated label.
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-            
+
                 errLevel = SetVarNValueLabelInDS(dsname, 0, 10, "low");
                 errLevel = SetVarNValueLabelInDS(dsname, 0, 100, "mid");
                 errLevel = SetVarNValueLabelInDS(dsname, 0, 300, "hig");
-                                    
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -5152,36 +5152,36 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                          
+    */
     SPSSXD_API int SetVarNValueLabelInDS(const char* dsName,
                                           const int index,
                                           const double value,
                                           const char* label);
-    
+
     /** Adds one value label for the string variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).     
-        \param value       The value for which a label is being set.         
+                       current data step.
+        \param index       The index position of the variable (0-based).
+        \param value       The value for which a label is being set.
         \param label       The associated label.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='Employee data.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-            
+
                 errLevel = SetVarCValueLabelInDS(dsname, 1, "f", "lucy");
                 errLevel = SetVarCValueLabelInDS(dsname, 1, "m", "jack");
-                        
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -5191,34 +5191,34 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                      
+    */
     SPSSXD_API int SetVarCValueLabelInDS(const char* dsName,
                                           const int index,
                                           const char* value,
                                           const char* label);
-                                          
+
     /** Deletes all value labels for the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
+                       current data step.
         \param index       The index position of the variable (0-based).
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-            
+
                 errLevel = DelVarValueLabelInDS(dsname, 6);
-                
-                EndDataStep();    
-                StopSpss(); 
-            }  
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            The return code. \n
                                 0=No error \n
@@ -5226,14 +5226,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                      
+    */
     SPSSXD_API int DelVarValueLabelInDS(const char* dsName,
                                           const int index);
-    
+
     /** Deletes a particular value label for the numeric variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).     
+                       current data step.
+        \param index       The index position of the variable (0-based).
         \param delValue    The value for which the value label will be removed.
         \return            The return code. \n
                                 0=No error \n
@@ -5242,41 +5242,41 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                      
+    */
     SPSSXD_API int DelVarNValueLabelInDS(const char* dsName,
                                           const int index,
                                           const double delValue);
-    
+
     /** Deletes a particular value label for the string variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.   
-        \param index       The index position of the variable (0-based).     
+                       current data step.
+        \param index       The index position of the variable (0-based).
         \param delValue    The value for which the value label will be removed.
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-            
+
                 errLevel = DelVarValueLabelInDS(dsname, 6);
-                    
+
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     int varType = GetVarTypeInDS(dsname, i, errLevel);
-            
-                    if ( varType == 0) 
+
+                    if ( varType == 0)
                     {
                         double* values;
                         char**  labels;
                         int num;
-                        errLevel = GetVarNValueLabelInDS(dsname, i, &values, &labels, num);  
+                        errLevel = GetVarNValueLabelInDS(dsname, i, &values, &labels, num);
                         if (num > 0)
                         {
                             std::cout << GetVarNameInDS(dsname, i, errLevel) << std::endl;
@@ -5286,7 +5286,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                             }
                             FreeDoubleArray(values, num);
                             FreeStringArray(labels, num);
-            
+
                         }
                     }
                     else
@@ -5294,7 +5294,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         char**  values;
                         char**  labels;
                         int num;
-                        errLevel = GetVarCValueLabelInDS(dsname, i, &values, &labels, num);  
+                        errLevel = GetVarCValueLabelInDS(dsname, i, &values, &labels, num);
                         if (num > 0)
                         {
                             std::cout << GetVarNameInDS(dsname, i, errLevel) << std::endl;
@@ -5304,14 +5304,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                             }
                             FreeStringArray(values, num);
                             FreeStringArray(labels, num);
-            
+
                         }
                     }
-                           
+
                 }
-                    
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The return code. \n
@@ -5321,126 +5321,126 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 10=Invalid index
-    */                                      
+    */
     SPSSXD_API int DelVarCValueLabelInDS(const char* dsName,
                                          const int index,
                                          const char* delValue);
-    
-    /** Inserts an empty case at a specified position in a specified dataset.    
+
+    /** Inserts an empty case at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.  
+                       current data step.
         \param rowIndex    The position at which the case is inserted (0-based).
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 int i = GetCaseCountInDS(dsname,errLevel);
                 for ( --i; i >=0 ; i-=2)
                 {
                     errLevel = InsertCase(dsname, i);
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
-            } 
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
-        \return            The return code.  \n  
+        \return            The return code.  \n
                                 0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 97=Invalid row index
-    */                         
+    */
     SPSSXD_API int InsertCase(const char* dsName,
                               const long rowIndex);
-    
-    /** Deletes the case at a specified position in a specified dataset.    
+
+    /** Deletes the case at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.  
-        \param rowIndex    The position of the case to be deleted (0-based).    
+                       current data step.
+        \param rowIndex    The position of the case to be deleted (0-based).
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 int i = GetCaseCountInDS(dsname,errLevel);
                 for ( --i; i >=0 ; i-=2)
                 {
                     errLevel = DeleteCase(dsname, i);
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
-        \return            The return code.   \n 
+        \return            The return code.   \n
                                 0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 97=Invalid row index
-    */                              
+    */
     SPSSXD_API int DeleteCase(const char* dsName,
                               const long rowIndex);
-    
+
     /** Gets the number of rows in the specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.                              
+                       current data step.
         \param errLevel    The return code. \n
                                 0=No error \n
                                 17 =IBM SPSS Statistics backend is not ready \n
                                 89 =Function cannot be called outside of a data step or user procedure \n
-                                87 =Invalid dataset name 
+                                87 =Invalid dataset name
         \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 std::cout<< GetCaseCountInDS(dsname,errLevel) << std::endl;
-                    
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return            The number of rows.
-    */                              
+    */
     SPSSXD_API long GetCaseCountInDS(const char* dsName,
                                     int& errLevel );
-    
+
     /** Gets a numeric value (associated with a numeric variable) from a specified row and column of a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.    
-        \param rowIndex    The row position (0-based).       
-        \param columnIndex The column position (0-based).      
+                       current data step.
+        \param rowIndex    The row position (0-based).
+        \param columnIndex The column position (0-based).
         \param isMissing    Returned parameter specifying whether the retrieved value is missing: 1 for user missing,
-                            2 for system missing, and 0 for not missing.                    
+                            2 for system missing, and 0 for not missing.
         \param errLevel    The return code. \n
-                                0=No error \n 
+                                0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
@@ -5448,19 +5448,19 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 10=Invalid column index \n
                                 97=Invalid row index
         \return            A cell value.
-    */                                  
+    */
     SPSSXD_API double GetNCellValue(const char* dsName,
                                     const long rowIndex,
                                     const int columnIndex,
                                     int& isMissing,
                                     int& errLevel );
-    
+
     /** Gets a string value (associated with a string variable) from a specified row and column of a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.    
-        \param rowIndex    The row position (0-based).       
-        \param columnIndex The column position (0-based).    
-        \param isMissing    Returned parameter specifying whether the retrieved value is missing: 1 for user missing, 
+                       current data step.
+        \param rowIndex    The row position (0-based).
+        \param columnIndex The column position (0-based).
+        \param isMissing    Returned parameter specifying whether the retrieved value is missing: 1 for user missing,
                            0 for not missing.
         \param errLevel    the return code.
                                 0=No error \n
@@ -5475,25 +5475,25 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='Employee data.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 const int length = 4;
                 int types[length];
                 for (int i=0; i< length; i++)
                     types[i] = GetVarTypeInDS(dsname, i, errLevel);
-            
+
                 for ( int i = GetCaseCountInDS(dsname,errLevel) - 1; i >=0 ; i-=2)
                 {
                     for (int j = 0; j < length; ++j)
                     {
                         int isMissing;
-                        if ( types[j] == 0 ) 
+                        if ( types[j] == 0 )
                         {
                             std::cout<< GetNCellValue(dsname, i, j, isMissing, errLevel) << ",";
                         }
@@ -5504,25 +5504,25 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                     }
                     std::cout << std::endl;
                 }
-                    
-                EndDataStep();    
-                StopSpss(); 
-            }                       
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            A cell value.
-    */                              
+    */
     SPSSXD_API const char* GetCCellValue(const char* dsName,
                                         const long rowIndex,
                                         const int columnIndex,
                                         int& isMissing,
                                         int& errLevel );
-    
+
     /** Sets a numeric value (associated with a numeric variable) in a specified row and column of a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.    
-        \param rowIndex    The row position (0-based).       
-        \param columnIndex The column position (0-based).    
-        \param value       A double value.                       
+                       current data step.
+        \param rowIndex    The row position (0-based).
+        \param columnIndex The column position (0-based).
+        \param value       A double value.
         \return            The return code. \n
                                 0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
@@ -5531,42 +5531,42 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 56=Cannot use this function to set the value of a string variable \n
                                 10=Invalid column index \n
                                 97=Invalid row index \n
-    */                                  
+    */
     SPSSXD_API int SetNCellValue(const char* dsName,
                                 const long rowIndex,
                                 const int columnIndex,
                                   const double value );
-    
+
     /** Sets a string value (associated with a string variable) in a specified row and column of a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.    
-        \param rowIndex    The row position (0-based).       
-        \param columnIndex The column position (0-based).    
-        \param value       A string value.    
-        \code 
+                       current data step.
+        \param rowIndex    The row position (0-based).
+        \param columnIndex The column position (0-based).
+        \param value       A string value.
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='Employee data.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 const int length = 4;
                 int types[length];
                 for (int i=0; i< length; i++)
                     types[i] = GetVarTypeInDS(dsname, i, errLevel);
-            
+
                 for ( int i = 0; i < length ; ++i)
                 {
                     errLevel = InsertCase(dsname, i);
                     for (int j = 0; j < length; ++j)
                     {
-                        if ( types[j] == 0 ) 
+                        if ( types[j] == 0 )
                         {
                             errLevel = SetNCellValue(dsname, i, j, 88);
                         }
@@ -5576,10 +5576,10 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         }
                     }
                 }
-                    
-                EndDataStep();    
-                StopSpss(); 
-            }                
+
+                EndDataStep();
+                StopSpss();
+            }
         \endcode
         \return            The return code. \n
                                 0=No error \n
@@ -5589,7 +5589,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 57=Cannot use this function to set the value of a numeric variable \n
                                 10=Invalid column index \n
                                 97=Invalid row index
-    */                              
+    */
     SPSSXD_API int SetCCellValue(const char* dsName,
                                 const long rowIndex,
                                 const int columnIndex,
@@ -5602,14 +5602,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
      */
     SPSSXD_API int IsUTF8mode();
 
-    /** Gets the names of any multiple response sets defined for the active dataset. 
+    /** Gets the names of any multiple response sets defined for the active dataset.
         The backend needs to be started before calling this function.
         RemoveStringList must be called to delete memory used by the returned void pointer.
       \param errLevel   The returned er=ror level. \n
                         0=No error \n
                         9=No data source \n
                         17=IBM SPSS Statistics backend is not ready
-      \code 
+      \code
            int err = 0;
            if(!IsBackendReady()){
               err = StartSpss();
@@ -5629,19 +5629,19 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                Submit(cmd.c_str(),cmd.size());
                cmd = "MRSETS /MDGROUP NAME=$mltnews LABEL='News sources' VARIABLES=Newspaper TV Web VALUE=1.";
                Submit(cmd.c_str(),cmd.size());
-               
+
                void *result = GetMultiResponseSetNames(err);
                int len = GetStringListLength(result);
 
                for (int i = 0; i < len; ++i ){
                    const char *mrsetName = GetStringFromList(result,i);
 
-                   char *mrsetLabel, *mrsetCountedValue; 
+                   char *mrsetLabel, *mrsetCountedValue;
                    int mrsetCodeAs, mrsetDataType;
                    void *elemVarNames;
                    GetMultiResponseSet(mrsetName,&mrsetLabel,
                                        mrsetCodeAs, &mrsetCountedValue,
-                                       mrsetDataType, &elemVarNames, 
+                                       mrsetDataType, &elemVarNames,
                                        err);
 
                    std::cout << "multiple response set is: " << std::endl;
@@ -5649,7 +5649,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                    std::cout << "mrsetLabel = " << mrsetLabel << std::endl;
                    std::cout << "mrsetCodeAs = " << mrsetCodeAs << std::endl;
                    std::cout << "mrsetDataType = " << mrsetDataType << std::endl;
-                   
+
                    int numof = GetStringListLength(elemVarNames);
                    for (int j = 0; j < numof; ++j ){
                        const char *elemVar = GetStringFromList(elemVarNames,j);
@@ -5660,7 +5660,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                    RemoveStringList(elemVarNames);
                }
                RemoveStringList(result);
-               
+
                cmd = "MRSETS  /DISPLAY NAME=[$mltnews].";
                Submit(cmd.c_str(),cmd.size());
            }
@@ -5670,23 +5670,23 @@ SPSSXD_API int GetCursorPosition(int& curPos);
 
     SPSSXD_API void* GetMultiResponseSetNames(int &errLevel);
 
-    /** Gets the details for a specified multiple response set associated with the active dataset. 
+    /** Gets the details for a specified multiple response set associated with the active dataset.
        The backend needs to be started before calling this function.
-       FreeString must be called to delete memory used by mrsetLabel and mrsetCountedValue.  
+       FreeString must be called to delete memory used by mrsetLabel and mrsetCountedValue.
        RemoveStringList must be called to delete memory used by elemVarNames.
       \param mrsetName      The name of the specified multiple response set (input).
       \param mrsetLabel     The label, if any, of the specified multiple response set (output).
       \param mrsetCodeAs    The variable coding of the specified multiple response set (output). \n
                             1 = Categories \n
                             2 = Dichotomies
-      \param mrsetCountedValue  The counted value of the specified multiple 
-                                response set (output). Only applies to multiple dichotomy sets. If mrsetCodeAs is 1 (Categories), 
+      \param mrsetCountedValue  The counted value of the specified multiple
+                                response set (output). Only applies to multiple dichotomy sets. If mrsetCodeAs is 1 (Categories),
                                 mrsetCountedValue will always be an empty string.
-      \param mrsetDataType  The data type of the elementary variables in the 
+      \param mrsetDataType  The data type of the elementary variables in the
                             specified multiple response set (output).
-                            Zero for numeric variables or the length in bytes for 
+                            Zero for numeric variables or the length in bytes for
                             string variables.
-      \param elemVarNames   The names of the elementary variables in the specified multiple 
+      \param elemVarNames   The names of the elementary variables in the specified multiple
                             response set (output).
       \param errLevel   The returned error level. \n
                         0=No error \n
@@ -5694,12 +5694,12 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         17=IBM SPSS Statistics backend is not ready
       \sa GetMultiResponseSetNames
      */
-    SPSSXD_API void  GetMultiResponseSet(const char *mrsetName, 
-                                         char **mrsetLabel, 
+    SPSSXD_API void  GetMultiResponseSet(const char *mrsetName,
+                                         char **mrsetLabel,
                                          int &mrsetCodeAs,
                                          char **mrsetCountedValue,
                                          int &mrsetDataType,
-                                         void **elemVarNames, 
+                                         void **elemVarNames,
                                          int &errLevel);
 
    /** Sets a multiple response set for a specified dataset.
@@ -5712,8 +5712,8 @@ SPSSXD_API int GetCursorPosition(int& curPos);
       \param mrsetCodeAs    The variable coding for the multiple response set. \n
                             1   = Categories \n
                             2   = Dichotomies
-      \param mrsetCountedValue  The counted value for the multiple response set (only applies to multiple dichotomy sets). 
-                                If mrsetCodeAs is 1 (Categories), 
+      \param mrsetCountedValue  The counted value for the multiple response set (only applies to multiple dichotomy sets).
+                                If mrsetCodeAs is 1 (Categories),
                                 mrsetCountedValue should be an empty string.
       \param elemVarNames   The list of the names of the elementary variables in the multiple response set.
       \param numOfVars      The number of elementary variables.
@@ -5730,19 +5730,19 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             }
            if( 0 == errLevel ){
                const char* cmd ="GET FILE='demo.sav'.";
-               Submit(cmd, strlen(cmd));    
+               Submit(cmd, strlen(cmd));
                StartDataStep();
-               
+
                const char* dsname = "example";
                errLevel = CreateDataset(dsname);
-               
+
                errLevel = SetVarNameInDS(dsname, 0, "a");
                std::cout << GetVarNameInDS(dsname, 0, errLevel) << std::endl;
                errLevel = SetVarNameInDS(dsname, 1, "b");
                std::cout << GetVarNameInDS(dsname, 1, errLevel) << std::endl;
                errLevel = SetVarNameInDS(dsname, 2, "c");
                std::cout << GetVarNameInDS(dsname, 2, errLevel) << std::endl;
-               
+
                const char *mrsetName = "$mrset1";
                const char *mrsetLabel = "myMrset1";
                const char *mrsetCountedValue = "";
@@ -5754,19 +5754,19 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                elemVarNames[1] = new char[2];
                strcpy(elemVarNames[0],"a");
                strcpy(elemVarNames[1],"b");
-               
+
                SetMultiResponseSetInDS(dsname,mrsetName,mrsetLabel,mrsetCodeAs,mrsetCountedValue,
                                     (const char**)elemVarNames,numOfVars,errLevel);
-   
+
                delete []elemVarNames[0];
                delete []elemVarNames[1];
                delete []elemVarNames;
-               EndDataStep();    
-               StopSpss(); 
+               EndDataStep();
+               StopSpss();
            }
       \endcode
-    */                                                                          
-    SPSSXD_API void SetMultiResponseSetInDS(const char *datasetName, 
+    */
+    SPSSXD_API void SetMultiResponseSetInDS(const char *datasetName,
                                             const char *mrsetName,
                                             const char *mrsetLabel,
                                             const int mrsetCodeAs,
@@ -5775,14 +5775,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                             const int numOfVars,
                                             int &errLevel);
 
-    /** Gets the names of any multiple response sets associated with the current procedure data source. 
+    /** Gets the names of any multiple response sets associated with the current procedure data source.
         The backend needs to be started and there needs to be a procedure data source before calling this function.
         RemoveStringList must be called to delete memory used by the returned void pointer.
       \param errLevel   The returned error level. \n
                         0=No error \n
                         17=IBM SPSS Statistics backend is not ready \n
                         60=No cursor is running
-      \code 
+      \code
            int err = 0;
            if(!IsBackendReady()){
               err = StartSpss();
@@ -5802,7 +5802,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                Submit(cmd.c_str(),cmd.size());
                cmd = "MRSETS /MDGROUP NAME=$mltnews LABEL='News sources' VARIABLES=Newspaper TV Web VALUE=1.";
                Submit(cmd.c_str(),cmd.size());
-               
+
                err = MakeCaseCursor();
                void *result = GetMultiResponseSetNamesInProcDS(err);
                int len = GetStringListLength(result);
@@ -5810,12 +5810,12 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                for (int i = 0; i < len; ++i ){
                    const char *mrsetName = GetStringFromList(result,i);
 
-                   char *mrsetLabel, *mrsetCountedValue; 
+                   char *mrsetLabel, *mrsetCountedValue;
                    int mrsetCodeAs, mrsetDataType;
                    void *elemVarNames;
                    GetMultiResponseSetInProcDS(mrsetName,&mrsetLabel,
                                                mrsetCodeAs, &mrsetCountedValue,
-                                               mrsetDataType, &elemVarNames, 
+                                               mrsetDataType, &elemVarNames,
                                                err);
 
                    std::cout << "multiple response set is: " << std::endl;
@@ -5823,7 +5823,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                    std::cout << "mrsetLabel = " << mrsetLabel << std::endl;
                    std::cout << "mrsetCodeAs = " << mrsetCodeAs << std::endl;
                    std::cout << "mrsetDataType = " << mrsetDataType << std::endl;
-                   
+
                    int numof = GetStringListLength(elemVarNames);
                    for (int j = 0; j < numof; ++j ){
                        const char *elemVar = GetStringFromList(elemVarNames,j);
@@ -5835,7 +5835,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                }
                RemoveStringList(result);
                RemoveCaseCursor();
-               
+
                cmd = "MRSETS  /DISPLAY NAME=[$mltnews].";
                Submit(cmd.c_str(),cmd.size());
            }
@@ -5844,7 +5844,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
      */
     SPSSXD_API void* GetMultiResponseSetNamesInProcDS(int &errLevel);
 
-   /** Gets the details for a specified multiple response set associated with the current procedure data source. 
+   /** Gets the details for a specified multiple response set associated with the current procedure data source.
        The backend needs to be started and there needs to be a procedure data source before calling this function.
        FreeString must be called to delete memory used by mrsetLabel and mrsetCountedValue.
        RemoveStringList must be called to delete memory used by elemVarNames.
@@ -5853,14 +5853,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
       \param mrsetCodeAs    The variable coding of the specified multiple response set (output). \n
                             1   = Categories \n
                             2   = Dichotomies
-      \param mrsetCountedValue  The counted value of the specified multiple 
-                                response set (output). Only applies to multiple dichotomy sets. If mrsetCodeAs is 1 (Categories), 
-                                mrsetCountedValue will always be an empty string. 
-      \param mrsetDataType  The type of the elementary variables in the 
+      \param mrsetCountedValue  The counted value of the specified multiple
+                                response set (output). Only applies to multiple dichotomy sets. If mrsetCodeAs is 1 (Categories),
+                                mrsetCountedValue will always be an empty string.
+      \param mrsetDataType  The type of the elementary variables in the
                             specified multiple response set (output).
-                            Zero for numeric variables or the length in bytes for 
+                            Zero for numeric variables or the length in bytes for
                             string variables.
-      \param elemVarNames   The names of the elementary variables in the specified multiple 
+      \param elemVarNames   The names of the elementary variables in the specified multiple
                             response set (output).
       \param errLevel   The returned error level. \n
                         0=No error \n
@@ -5869,14 +5869,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
 
       \sa GetMultiResponseSetNamesInProcDS
      */
-    SPSSXD_API void  GetMultiResponseSetInProcDS(const char *mrsetName, 
-                                                 char **mrsetLabel, 
+    SPSSXD_API void  GetMultiResponseSetInProcDS(const char *mrsetName,
+                                                 char **mrsetLabel,
                                                  int &mrsetCodeAs,
                                                  char **mrsetCountedValue,
                                                  int &mrsetDataType,
-                                                 void **elemVarNames, 
+                                                 void **elemVarNames,
                                                  int &errLevel);
- 
+
     /** Gets the names of any datafile attributes for a specified dataset.
         After calling this function,
         FreeAttrNames should be called to free the memory for the names.
@@ -5908,7 +5908,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 StartDataStep();
                 errLevel = CreateDataset("*", false);
                 const char* dsname = GetActive(errLevel);
-                
+
                 int numOfNames = 0;
                 char **name;
                 errLevel = GetDataFileAttributeNamesInDS(dsname,&name,&numOfNames);
@@ -5922,7 +5922,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                     FreeAttributes(attr,numOfAttr);
                 }
                 FreeAttributeNames(name,numOfNames);
-                EndDataStep();    
+                EndDataStep();
             }
             StopSpss();
        \endcode
@@ -5932,8 +5932,8 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                87=Invalid dataset name \n
                89=Function cannot be called outside of a data step or user procedure
     */
-    SPSSXD_API int GetDataFileAttributeNamesInDS(const char* dsName, 
-                                             char ***name, 
+    SPSSXD_API int GetDataFileAttributeNamesInDS(const char* dsName,
+                                             char ***name,
                                              int *numOfNames);
 
     /** Gets the values associated with a specified datafile attribute for a specified dataset.
@@ -5942,7 +5942,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                        current data step.
        \param attrName  The name of the attribute to retrieve (input).
        \param attr      The value(s) associated with the attribute (output).
-       \param numOfAttr The number of values associated with the attribute (output). A given datafile attribute can have an array of values. 
+       \param numOfAttr The number of values associated with the attribute (output). A given datafile attribute can have an array of values.
        \sa
            GetDataFileAttributeNamesInDS
        \return The return code. \n
@@ -5951,9 +5951,9 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                87=Invalid dataset name \n
                89=Function cannot be called outside of a data step or user procedure
     */
-    SPSSXD_API int GetDataFileAttributesInDS(const char* dsName, 
-                                         const char *attrName, 
-                                         char ***attr, 
+    SPSSXD_API int GetDataFileAttributesInDS(const char* dsName,
+                                         const char *attrName,
+                                         char ***attr,
                                          int *numOfAttr);
 
     /** Gets the names of any multiple response sets associated with a specified dataset.
@@ -5966,7 +5966,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         17=IBM SPSS Statistics backend is not ready \n
                         87=Invalid dataset name \n
                         89=Function cannot be called outside of a data step or user procedure
-       \code 
+       \code
            int errLevel = 0;
            if(!IsBackendReady()){
               errLevel = StartSpss();
@@ -5986,7 +5986,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                Submit(cmd.c_str(),cmd.size());
                cmd = "MRSETS /MDGROUP NAME=$mltnews LABEL='News sources' VARIABLES=Newspaper TV Web VALUE=1.";
                Submit(cmd.c_str(),cmd.size());
-               
+
                StartDataStep();
                errLevel = CreateDataset("*", false);
                const char* dsname = GetActive(errLevel);
@@ -5997,19 +5997,19 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                for (int i = 0; i < len; ++i ){
                    const char *mrsetName = GetStringFromList(result,i);
 
-                   char *mrsetLabel, *mrsetCountedValue; 
+                   char *mrsetLabel, *mrsetCountedValue;
                    int mrsetCodeAs, mrsetDataType;
                    void *elemVarNames;
                    GetMultiResponseSetInDS(dsname, mrsetName,&mrsetLabel,
                                            mrsetCodeAs, &mrsetCountedValue,
-                                           mrsetDataType, &elemVarNames, 
+                                           mrsetDataType, &elemVarNames,
                                            errLevel);
 
                    std::cout << "mrsetName = " << mrsetName << std::endl;
                    std::cout << "mrsetLabel = " << mrsetLabel << std::endl;
                    std::cout << "mrsetCodeAs = " << mrsetCodeAs << std::endl;
                    std::cout << "mrsetDataType = " << mrsetDataType << std::endl;
-                   
+
                    int numof = GetStringListLength(elemVarNames);
                    for (int j = 0; j < numof; ++j ){
                        const char *elemVar = GetStringFromList(elemVarNames,j);
@@ -6021,7 +6021,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                }
                RemoveStringList(result);
                EndDataStep();
-               
+
                cmd = "MRSETS  /DISPLAY NAME=[$mltnews].";
                Submit(cmd.c_str(),cmd.size());
            }
@@ -6031,7 +6031,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
      */
     SPSSXD_API void* GetMultiResponseSetNamesInDS(const char* dsName, int &errLevel);
 
-   /** Gets the details for a specified multiple response set associated with a specified dataset. 
+   /** Gets the details for a specified multiple response set associated with a specified dataset.
        The backend needs to be started before calling this function.
        FreeString must be called to delete memory used by mrsetLabel and mrsetCountedValue.
        RemoveStringList must be called to delete memory used by elemVarNames.
@@ -6042,14 +6042,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
       \param mrsetCodeAs    The variable coding of the specified multiple response set (output). \n
                             1   = Categories \n
                             2   = Dichotomies
-      \param mrsetCountedValue  The counted value of the specified multiple 
-                                response set (output). Only applies to multiple dichotomy sets. If mrsetCodeAs is 1 (Categories), 
+      \param mrsetCountedValue  The counted value of the specified multiple
+                                response set (output). Only applies to multiple dichotomy sets. If mrsetCodeAs is 1 (Categories),
                                 mrsetCountedValue will always be an empty string.
-      \param mrsetDataType  The type of the elementary variables in the 
+      \param mrsetDataType  The type of the elementary variables in the
                             specified multiple response set (output).
-                            Zero for numeric variables or the length in bytes for 
+                            Zero for numeric variables or the length in bytes for
                             string variables.
-      \param elemVarNames   The names of the elementary variables in the specified multiple 
+      \param elemVarNames   The names of the elementary variables in the specified multiple
                             response set (output).
       \param errLevel   The returned error level. \n
                         0=No error \n
@@ -6059,16 +6059,16 @@ SPSSXD_API int GetCursorPosition(int& curPos);
 
       \sa GetMultiResponseSetNamesInDS
      */
-    SPSSXD_API void  GetMultiResponseSetInDS(const char* dsName, 
-                                         const char *mrsetName, 
-                                         char **mrsetLabel, 
+    SPSSXD_API void  GetMultiResponseSetInDS(const char* dsName,
+                                         const char *mrsetName,
+                                         char **mrsetLabel,
                                          int &mrsetCodeAs,
                                          char **mrsetCountedValue,
                                          int &mrsetDataType,
-                                         void **elemVarNames, 
-                                         int &errLevel);    
+                                         void **elemVarNames,
+                                         int &errLevel);
 
-    /** Gets the display width for the variable at a specified position in a specified dataset.     
+    /** Gets the display width for the variable at a specified position in a specified dataset.
       \param dsName     The dataset name. Must be the name of a dataset associated with a dataset object in the
                        current data step.
       \param index      The index position of the variable (0-based).
@@ -6089,7 +6089,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                StartDataStep();
                errLevel = CreateDataset("*", false);
                const char* dsname = GetActive(errLevel);
-               
+
                int varColumnWidth = GetVarColumnWidthInDS( dsname, 0, errLevel);
                std::cout << "The returned variable column width is " << varColumnWidth << std::endl;
                EndDataStep();
@@ -6097,12 +6097,12 @@ SPSSXD_API int GetCursorPosition(int& curPos);
            StopSpss();
       \endcode
       \return   The returned variable column width.
-    */                                
+    */
     SPSSXD_API int GetVarColumnWidthInDS(const char* dsName,
                                           const int index,
-                                          int& errLevel);   
+                                          int& errLevel);
 
-    /** Sets the display width for the variable at a specified position in a specified dataset.    
+    /** Sets the display width for the variable at a specified position in a specified dataset.
       \param dsName     The dataset name. Must be the name of a dataset associated with a dataset object in the
                        current data step.
       \param index      The index position of the variable (0-based).
@@ -6118,7 +6118,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                StartDataStep();
                errLevel = CreateDataset("*", false);
                const char* dsname = GetActive(errLevel);
-               
+
                std::cout << "The old width = " << GetVarColumnWidthInDS( dsname, 0, errLevel) << std::endl;
                int varColumnWidth = 50;
                errLevel = SetVarColumnWidthInDS(dsname, 0, varColumnWidth);
@@ -6135,7 +6135,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         89=Function cannot be called outside of a data step or user procedure \n
                         103=Invalid column width (must be a positive integer) \n
                         108=The variable column width is too long
-    */                                
+    */
     SPSSXD_API int SetVarColumnWidthInDS(const char* dsName,
                                           const int index,
                                           const int width);
@@ -6168,9 +6168,9 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 StartDataStep();
                 errLevel = CreateDataset("*", false);
                 const char* dsname = GetActive(errLevel);
-                
+
                 DelDataFileAttributesInDS( dsname, "OriginalVersion" );
-                
+
                 //check if the datafile attribute has been removed.
                 int numOfNames = 0;
                 char **name;
@@ -6185,7 +6185,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                     FreeAttributes(attr,numOfAttr);
                 }
                 FreeAttributeNames(name,numOfNames);
-                EndDataStep();    
+                EndDataStep();
             }
             StopSpss();
        \endcode
@@ -6194,14 +6194,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                17=IBM SPSS Statistics backend is not ready \n
                96=The given attribute name does not exist
     */
-    SPSSXD_API int DelDataFileAttributesInDS(const char* dsName, 
+    SPSSXD_API int DelDataFileAttributesInDS(const char* dsName,
                                              const char *attrName);
 
     /** Deletes a specified multiple response set from a specified dataset.
        \param dsName    The dataset name. Must be the name of a dataset associated with a dataset object in the
                        current data step
        \param mrsetName The name of the multiple response set.
-       \code 
+       \code
            int errLevel = 0;
            if(!IsBackendReady()){
               errLevel = StartSpss();
@@ -6221,13 +6221,13 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                Submit(cmd.c_str(),cmd.size());
                cmd = "MRSETS /MDGROUP NAME=$mltnews LABEL='News sources' VARIABLES=Newspaper TV Web VALUE=1.";
                Submit(cmd.c_str(),cmd.size());
-               
+
                StartDataStep();
                errLevel = CreateDataset("*", false);
                const char* dsname = GetActive(errLevel);
 
                errLevel = DelMultiResponseSetInDS( dsname, "$mltnews" );
-               
+
                //check if the multiple response set has been removed.
                void *result = GetMultiResponseSetNamesInDS(dsname, errLevel);
                int len = GetStringListLength(result);
@@ -6235,19 +6235,19 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                for (int i = 0; i < len; ++i ){
                    const char *mrsetName = GetStringFromList(result,i);
 
-                   char *mrsetLabel, *mrsetCountedValue; 
+                   char *mrsetLabel, *mrsetCountedValue;
                    int mrsetCodeAs, mrsetDataType;
                    void *elemVarNames;
                    GetMultiResponseSetInDS(dsname, mrsetName,&mrsetLabel,
                                            mrsetCodeAs, &mrsetCountedValue,
-                                           mrsetDataType, &elemVarNames, 
+                                           mrsetDataType, &elemVarNames,
                                            errLevel);
 
                    std::cout << "mrsetName = " << mrsetName << std::endl;
                    std::cout << "mrsetLabel = " << mrsetLabel << std::endl;
                    std::cout << "mrsetCodeAs = " << mrsetCodeAs << std::endl;
                    std::cout << "mrsetDataType = " << mrsetDataType << std::endl;
-                   
+
                    int numof = GetStringListLength(elemVarNames);
                    for (int j = 0; j < numof; ++j ){
                        const char *elemVar = GetStringFromList(elemVarNames,j);
@@ -6259,7 +6259,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                }
                RemoveStringList(result);
                EndDataStep();
-               
+
                cmd = "MRSETS  /DISPLAY NAME=[$mltnews].";
                Submit(cmd.c_str(),cmd.size());
            }
@@ -6270,17 +6270,17 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                17=IBM SPSS Statistics backend is not ready \n
                106=The specified multiple response set does not exist
      */
-    SPSSXD_API int DelMultiResponseSetInDS(const char* dsName, 
-                                           const char *mrsetName);    
+    SPSSXD_API int DelMultiResponseSetInDS(const char* dsName,
+                                           const char *mrsetName);
 
-    /** GetGraphic displays an R-style graphic in the IBM SPSS Statistics Viewer. The supported formats 
+    /** GetGraphic displays an R-style graphic in the IBM SPSS Statistics Viewer. The supported formats
     for the graphic file are: png, jpg and bmp.
         \code
             void func()
             {
                 int errLevel = 0;
                 errLevel = StartSpss();
-                
+
                 const char *GraphicName = "image.png"
                 GetGraphic(GraphicName);
 
@@ -6292,14 +6292,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
         \param filePath A string specifying the path to a graphic file.
     */
     SPSSXD_API void GetGraphic(const char* filePath);
-    
+
     /** GetSPSSLocale returns a string specifying the locale of the IBM SPSS Statistics processor.
         \code
             void func()
             {
                 int errLevel = 0;
                 errLevel = StartSpss();
-                
+
                 const char *localeName = GetSPSSLocale(errLevel);
 
                 if(IsXDriven()){
@@ -6313,14 +6313,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
         \return A string specifying the locale of the IBM SPSS Statistics processor.
     */
     SPSSXD_API const char* GetSPSSLocale(int &errLevel);
-    
+
     /** GetOutputLanguage returns a string specifying the output language of the IBM SPSS Statistics processor.
         \code
             void func()
             {
                 int errLevel = 0;
                 errLevel = StartSpss();
-                
+
                 const char *olangName = GetOutputLanguage(errLevel);
 
                 if(IsXDriven()){
@@ -6353,7 +6353,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             {
                 int errLevel = 0;
                 errLevel = StartSpss();
-                
+
                 SetOutputLanguage("German", errLevel);
 
                 if(IsXDriven()){
@@ -6379,17 +6379,17 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                         17=IBM SPSS Statistics backend is not ready
     */
     SPSSXD_API void SetOutputLanguage(const char *lang, int &errLevel);
-    
+
     /** Return the depth to which the IBM SPSS Statistics backend is being driven.
         \param depth  The nesting depth
         \return The return code. \n
                 0=No error  \n
                 17=IBM SPSS Statistics backend is not ready
      */
-    SPSSXD_API int GetNestDepth(int& depth);    
+    SPSSXD_API int GetNestDepth(int& depth);
 
     /** Return the host application name and version. Before call this API, SetHostAppNameAndVersion(...) should
-        be called. Otherwise, it will return empty string. 
+        be called. Otherwise, it will return empty string.
         After calling this function, FreeString should be called to free the memory for the hostname and hostver.
         \code
             void func()
@@ -6399,7 +6399,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 char *hostname = "IBM SPSS Statistics";
                 char *hostver = "18.0.0.0";
                 errLevel = SetHostAppNameAndVersion(hostname, hostver);
-                
+
                 char *name,*version;
                 errLevel = GetHostAppNameAndVersion(&name, &version);
                 std::cout << "The name = " << name << std::endl;
@@ -6418,7 +6418,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 0=No error  \n
                 17=IBM SPSS Statistics backend is not ready
      */
-    SPSSXD_API int GetHostAppNameAndVersion(char **hostname, char **hostver);   
+    SPSSXD_API int GetHostAppNameAndVersion(char **hostname, char **hostver);
 
     /** Return the host application copyright. Before call this API, SetHostAppCopyright() should
         be called. Otherwise, it will return empty string.
@@ -6430,7 +6430,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 errLevel = StartSpss();
                 const char *theCopyright = "the copyright.";
                 errLevel = SetHostAppCopyright(theCopyright);
-                
+
                 char *copyright;
                 errLevel = GetHostAppCopyright(&copyright);
                 std::cout << "The copyright = " << copyright << std::endl;
@@ -6457,7 +6457,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                 char *hostname = "IBM SPSS Statistics";
                 char *hostver = "18.0.0.0";
                 errLevel = SetHostAppNameAndVersion(hostname, hostver);
-                
+
                 char *name,*version;
                 errLevel = GetHostAppNameAndVersion(&name, &version);
                 std::cout << "The name = " << name << std::endl;
@@ -6484,10 +6484,10 @@ SPSSXD_API int GetCursorPosition(int& curPos);
             {
                 int errLevel = 0;
                 errLevel = StartSpss();
-                
+
                 const char *copyright = "the copyright.";
                 errLevel = SetHostAppCopyright(copyright);
-                
+
                 char *check;
                 errLevel = GetHostAppCopyright(&check);
                 std::cout << "The copyright = " << check << std::endl;
@@ -6513,17 +6513,17 @@ SPSSXD_API int GetCursorPosition(int& curPos);
 
                 const char *cmd1 = "FILE HANDLE demo1 /NAME='/demo.sav'.";
                 Submit(cmd1,strlen(cmd1));
-            
+
                 const char *cmd2 = "FILE HANDLE demo2 /NAME='/demo.sav'.";
                 Submit(cmd2,strlen(cmd2));
-            
+
                 void* result = GetFileHandles(errLevel);
                 int size = GetStringListLength(result);
-            
+
             	//if get handle list failure, or handle list is empty
             	if ( 0 != errLevel || 0 == size || 0 == result)
             		return -1;
-            
+
             	for( int i=0; i<size; i+=3) {
             		const char * str = GetStringFromList(result,i);
             		std::cout << "file handle = " << str << std::endl;
@@ -6536,15 +6536,16 @@ SPSSXD_API int GetCursorPosition(int& curPos);
 
                 if(IsXDriven()){
                   StopSpss();
+                }
             }
         \endcode
         \param errLevel This is the return code. \n
                         0=Success \n
                         17=IBM SPSS Statistics backend is not ready
-        \return The file handles. 
+        \return The file handles.
     */
     SPSSXD_API void* GetFileHandles(int& errLevel);
-	
+
   /** GetImage gets image from  workspace, and returns images representation.
       \param handle a case-insensitive name of XML object in the XML workspace.
       \param fileName an image file name which you want to get from XML workspace.
@@ -6565,15 +6566,15 @@ SPSSXD_API int GetCursorPosition(int& curPos);
     }
     if( 0 == errCode ){
     const char *cmd = "Get file = 'Employee data.sav'.
-                                        OMS SELECT CHARTS 
-                                        /DESTINATION FORMAT=OXML 
-                                        XMLWORKSPACE ='theHandle' 
-                                        IMAGES =YES  
-                                        CHARTFORMAT =IMAGE 
-                                        IMAGEFORMAT =JPG. 
-                                        FREQUENCIES VARIABLES=educ 
-                                        /BARCHART FREQ 
-                                        /ORDER=ANALYSIS. 
+                                        OMS SELECT CHARTS
+                                        /DESTINATION FORMAT=OXML
+                                        XMLWORKSPACE ='theHandle'
+                                        IMAGES =YES
+                                        CHARTFORMAT =IMAGE
+                                        IMAGEFORMAT =JPG.
+                                        FREQUENCIES VARIABLES=educ
+                                        /BARCHART FREQ
+                                        /ORDER=ANALYSIS.
                                         OMSEND.";
 
      Submit(cmd, strlen(cmd));
@@ -6626,17 +6627,17 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                bool hideName,
                                bool hideLabels,
                                const char* cellVal);
-                               
+
     SPSSXD_API const char* TransCode(const char* orig, int& errLevel);
-    
+
     /** Returns a list of tags associated with any active OMS requests.
         * \param errLevel   take the error when to call this function.
                             0=No error \n
                             17=IBM SPSS Statistics backend is not ready.\n
-        * \return A list of strings specifying the tags for any active OMS requests. 
-                           The structure of this list is the same as returned from the GetHandleList function, 
-                           so the functions GetStringListLength and GetStringFromList may be used to obtain 
-                           the string value of the handles. RemoveStringList can be used to free the storage 
+        * \return A list of strings specifying the tags for any active OMS requests.
+                           The structure of this list is the same as returned from the GetHandleList function,
+                           so the functions GetStringListLength and GetStringFromList may be used to obtain
+                           the string value of the handles. RemoveStringList can be used to free the storage
                            relating to this list.\n
 
             \code
@@ -6666,23 +6667,23 @@ SPSSXD_API int GetCursorPosition(int& curPos);
          \endcode
     */
     SPSSXD_API void* GetOMSTagList(int& errLevel);
-    
-    /** The GetSetting function returns the value of an options setting, as set from the SET command. 
-       * \param setting    A string specifying the setting to retrieve. The possible values of setting 
-                                          are the names of the SET subcommands,  the param can be given either 
+
+    /** The GetSetting function returns the value of an options setting, as set from the SET command.
+       * \param setting    A string specifying the setting to retrieve. The possible values of setting
+                                          are the names of the SET subcommands,  the param can be given either
                                           in upper case or in lower case for example, "WORKSPACE", "OLANG", "XVERSION"\n.
        * \param errLevel take the error when to call this function.
                                            0=No error \n
                                            17=IBM SPSS Statistics backend is not ready.\n
                                            117=Invalid command.
-       * \param option  A string specifying an option associated with the value of the setting 
-                                           argument. Currently, this only applies to the MIOUTPUT subcommand of SET,  
-                                           for which there is a separate setting for each of the keywords OBSERVED, IMPUTED, 
-                                           POOLED, and DIAGNOSTICS. When setting equals MIOUTPUT, option can be set to 
-                                           any of those four keywords to obtain the associated value of the keyword - "Yes" or 
+       * \param option  A string specifying an option associated with the value of the setting
+                                           argument. Currently, this only applies to the MIOUTPUT subcommand of SET,
+                                           for which there is a separate setting for each of the keywords OBSERVED, IMPUTED,
+                                           POOLED, and DIAGNOSTICS. When setting equals MIOUTPUT, option can be set to
+                                           any of those four keywords to obtain the associated value of the keyword - "Yes" or
                                            "No". By default, option is NULL.\n
         *\return Returns the value of the specified setting, as a string.
-        *\remark GetSetting does not support retrieving the value of the MTINDEX subcommand of the SET command. 
+        *\remark GetSetting does not support retrieving the value of the MTINDEX subcommand of the SET command.
 
          \code
               int errCode = 0;
@@ -6709,7 +6710,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                             65=No procedure
     */
     SPSSXD_API int EncryptTempFiles(bool encrypted);
-    
+
     /** GetVariableRole returns the role of the indexed variable in the current active file.
   The backend needs to be started and there needs to be an active datasource before calling this function.
   The index value must be within bounds of the variable count.
@@ -6736,7 +6737,7 @@ SPSSXD_API int GetCursorPosition(int& curPos);
     \return If No Error, the role of the variable.
     */
     SPSSXD_API int GetVariableRole(int index,int& errCode);
-    
+
     /** GetVariableRoleInProcDS returns the role of the indexed variable in the procedure data source.
         There needs to be an active datasource before calling this function.
         The index value must be within bounds of the variable count.
@@ -6751,14 +6752,14 @@ SPSSXD_API int GetCursorPosition(int& curPos);
         \return if No Error, the role of the variable.
     */
     SPSSXD_API int GetVariableRoleInProcDS(int index,int& errCode);
-    
+
     /** Sets the value of the role attribute of a variable.
       \param varName a null-terminated variable role.
       \param varRole variable role setting.
                  0 = InputRole \n
-                 1 = TargetRole \n 
-                 2 = BothRoles \n 
-                 3 = NoneRole \n 
+                 1 = TargetRole \n
+                 2 = BothRoles \n
+                 3 = NoneRole \n
                  4 = PartitionRole \n
                  5 = SplitRole \n
                  6=  FrequencyRole
@@ -6773,75 +6774,75 @@ SPSSXD_API int GetCursorPosition(int& curPos);
     */
     SPSSXD_API int SetVarRole(const char * varName,
                               const int varRole);
-    
+
     /** Gets the variable role (InputRole, TargetRole, BothRoles, NoneRole, PartitionRole and SplitRole) of the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
                              current data step.
-        \param index       The index position of the variable (0-based).                    
+        \param index       The index position of the variable (0-based).
         \param errLevel    The return code. \n
                                 0=No error \n
                                 17 =IBM SPSS Statistics backend is not ready \n
                                 89 =Function cannot be called outside of a data step or user procedure  \n
                                 87 =Invalid dataset name \n
                                 10 =Invalid index
-        \code 
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
                 for (int i =0; i < GetVarCountInDS(dsname,errLevel); ++i)
-                { 
+                {
                     std::cout << GetVarRoleInDS(dsname, i, errLevel) << std::endl;
                 }
-                
-                EndDataStep();    
-                StopSpss(); 
+
+                EndDataStep();
+                StopSpss();
             }
         \endcode
         \return The variable role. \n
                  0 = InputRole \n
-                 1 = TargetRole \n 
-                 2 = BothRoles \n 
-                 3 = NoneRole \n 
+                 1 = TargetRole \n
+                 2 = BothRoles \n
+                 3 = NoneRole \n
                  4 = PartitionRole \n
                  5 = SplitRole
-    */                                  
+    */
     SPSSXD_API int GetVarRoleInDS(const char* dsName,
                                   const int index,
                                   int& errLevel);
-                                  
+
     /** Sets the variable role (InputRole, TargetRole, BothRoles, NoneRole, PartitionRole, SplitRole and FrequencyRole) for the variable at a specified position in a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                                          current data step.  
-        \param index       The index position of the variable (0-based).     
-        \param varRole     The variable type--0 for numeric and an integer equal to the defined length for a string variable (maximum of 32767 bytes). 
-        \code 
+                                          current data step.
+        \param index       The index position of the variable (0-based).
+        \param varRole     The variable type--0 for numeric and an integer equal to the defined length for a string variable (maximum of 32767 bytes).
+        \code
             void func()
             {
                 int errLevel = 0;
                 const char* cmd ="GET FILE='demo.sav'.";
-            
+
                 StartSpss();
-                Submit(cmd, strlen(cmd));    
+                Submit(cmd, strlen(cmd));
                 StartDataStep();
-                
+
                 const char* dsname = "example";
                 errLevel = CreateDataset(dsname);
-                
+
                 errLevel = InsertVariable(dsname, 9, "mark", 8);
-                errLevel = SetVarRoleInDS(dsname, 9, 2); 
-                
-                EndDataStep();    
-                StopSpss(); 
-            } 
-        \endcode     
+                errLevel = SetVarRoleInDS(dsname, 9, 2);
+
+                EndDataStep();
+                StopSpss();
+            }
+        \endcode
         \return            The return code. \n
                                 0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
@@ -6849,33 +6850,33 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 87=Invalid dataset name \n
                                 10=Invalid index \n
                                 118=Invalid variable role \n
-    */                          
+    */
     SPSSXD_API int SetVarRoleInDS(const char* dsName,
                                   const int index,
                                   const int varRole);
-                                  
+
     SPSSXD_API int SetGraphicsLabel(const char* displaylabel,
-                                    const char* invariantdisplaylabel);  
+                                    const char* invariantdisplaylabel);
 
     SPSSXD_API int SaveDataToTempFile(const char* filename,
-                                      int varIndexes[], 
+                                      int varIndexes[],
                                       int keepCount);
-    
-    SPSSXD_API int GetDataFromTempFile(const char* filename, 
-                                       int newVarCount, 
+
+    SPSSXD_API int GetDataFromTempFile(const char* filename,
+                                       int newVarCount,
                                        int caseLen);
-                                       
+
     SPSSXD_API int* GetSplitEndIndex(int& size, int& errLevel);
 
     SPSSXD_API int SetMode(int mode = 0);
-    
+
     SPSSXD_API long GetRowCountInTempFile(int& errLevel);
-    
+
     /** Sets value in a specified row of a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.    
-        \param rowIndex    The row position (0-based).       
-        \param value       The pointer to case value.  
+                       current data step.
+        \param rowIndex    The row position (0-based).
+        \param value       The pointer to case value.
         \param bufferSize  The buffer size.
         \return            The return code. \n
                                 0=No error \n
@@ -6883,58 +6884,58 @@ SPSSXD_API int GetCursorPosition(int& curPos);
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 97=Invalid row index \n
-    */                                  
+    */
     SPSSXD_API int SetCaseValue(const char* dsName,
                                 const long rowIndex,
                                 bool isCache,
                                 void* value,
                                 int bufferSize);
-                                 
+
     /** Gets value from a specified row of a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.    
+                       current data step.
         \param rowIndex    The row position (0-based).
         \param errLevel    The return code. \n
-                                0=No error \n 
+                                0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name \n
                                 97=Invalid row index
         \return            A case value.
-    */                                  
+    */
     SPSSXD_API void* GetCaseValue(const char* dsName,
                                   const long rowIndex,
                                   bool isCache,
                                   int& len,
                                   int& errLevel );
-                                  
+
     /** Get row length of a specified dataset.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.    
+                       current data step.
         \param errLevel    The return code. \n
-                                0=No error \n 
+                                0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name
         \return            The case length.
-    */              
+    */
     SPSSXD_API int GetCaseLength(const char* dsName,
                                  int& errLevel );
-    
+
     /** Get OBS index of a specified variable.
         \param dsName      The dataset name. Must be the name of a dataset associated with a dataset object in the
-                       current data step.    
+                       current data step.
         \param errLevel    The return code. \n
-                                0=No error \n 
+                                0=No error \n
                                 17=IBM SPSS Statistics backend is not ready \n
                                 89=Function cannot be called outside of a data step or user procedure \n
                                 87=Invalid dataset name
         \return            The internal index of data corresponding to variable.
-    */     
+    */
     SPSSXD_API int GetVarObsIndex(const char* dsName,
                                   const int columnIndex,
                                   int& errLevel );
-    
+
     SPSSXD_API int SetCacheInDS(const char* dsName,
                                 bool isCache);
 }
